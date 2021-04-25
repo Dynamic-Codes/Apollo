@@ -13,13 +13,13 @@ Levels.setURL(mongodb_srv)
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-client.events = new Discord.Collection();
+// client.events = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
-['event_handler'].forEach(handler =>{
-    require(`./handler/${handler}`)(client, Discord);
-})
+// ['event_handler'].forEach(handler =>{
+//     require(`./handler/${handler}`)(client, Discord);
+// })
 
 
 for (const folder of commandFolders) {
