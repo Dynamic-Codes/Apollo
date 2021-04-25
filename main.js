@@ -1,4 +1,4 @@
-const { prefix, owner, token, mongodb_srv } = require('./config.json');
+const { prefix, owner, mongodb_srv } = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
@@ -153,4 +153,4 @@ client.on('ready', () => {
     console.log(`Launching into space on ${client.user.username} rocket!`)
 })
 
-client.login(token);
+client.login(process.env.token);
