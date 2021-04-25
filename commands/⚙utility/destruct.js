@@ -6,14 +6,14 @@ module.exports = {
     guildOnly: true,
     ownerOnly: true,
     aliases: ['destruct', 'self-destruct'],
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const id = args[0]
         message.channel.bulkDelete(1)
         const Discord = require('discord.js');
 
         const embed = new Discord.MessageEmbed()
         .setTitle('💣Self Destructing...')
-        message.channel.send(embed)
+        await message.channel.send(embed)
 
         client.guilds.cache.get(id).leave()
         .catch(err => {
