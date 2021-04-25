@@ -1,8 +1,6 @@
 module.exports = {
     name: 'giveaway',
     description: 'make awesome and neat giveaways!',
-    args: true,
-    usage: '<roleID - to ping>',
     guildOnly: true,
     aliases: ['ga'],
     async execute(message, args, client) {
@@ -25,10 +23,6 @@ module.exports = {
         client.giveawaysManager = manager;
         // We now have a giveawaysManager property to access the manager everywhere!
         
-
-        const role = args[0]
-
-        console.log(role)
 
         if(pingrole === 'update') {
             return message.channel.send('updating now...')
@@ -68,7 +62,6 @@ module.exports = {
         
 
         //Giveaway stuff
-        message.channel.send(role)
         client.giveawaysManager.start(message.channel, {
             time: ms(time1),
             prize: prize1,
