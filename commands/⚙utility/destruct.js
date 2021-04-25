@@ -11,8 +11,13 @@ module.exports = {
         message.channel.bulkDelete(1)
         const Discord = require('discord.js');
 
+        setTimeout(() => { message.channel.send('T minus 4 seconds..'); }, 1000);
+        setTimeout(() => { message.channel.send('--⚠-- 3'); }, 1000);
+        setTimeout(() => { message.channel.send('--⚠-- 2'); }, 1000);
+        setTimeout(() => { message.channel.send('--⚠-- 1'); }, 1000);
+
         const embed = new Discord.MessageEmbed()
-        .setTitle('💣Self Destructing...')
+        .setTitle('💣 Self Destructing now...')
         await message.channel.send(embed)
 
         client.guilds.cache.get(id).leave()
