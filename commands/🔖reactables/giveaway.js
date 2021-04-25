@@ -23,11 +23,6 @@ module.exports = {
         client.giveawaysManager = manager;
         // We now have a giveawaysManager property to access the manager everywhere!
         
-
-        if(pingrole === 'update') {
-            return message.channel.send('updating now...')
-        }
-        
         const botMessage = await message.channel.send("```GIVEAWAY SETUP: Preloading...```\n> 🌠 Please wait!");
 
         botMessage.edit("```GIVEAWAY SETUP: 1```\n> 🌠 Enter giveaway time [(number)s/m/d]");
