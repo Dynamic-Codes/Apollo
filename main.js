@@ -2,7 +2,7 @@ const { prefix, owner, mongodb_srv } = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
-const RPC = require("discord-rpc")
+
 const mongoose = require('mongoose')
 //Economy
 const mongoCurrency = require('discord-mongo-currency'); 
