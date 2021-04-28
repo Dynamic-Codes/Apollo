@@ -40,7 +40,7 @@ for (const file of commandFiles) {
 
 client.on('message', async message => {
     if (message.author.bot) return;
-    if (message.author.id === '524276585214378034') return message.reply('⚠ Seems like you are blacklisted. Sucks to be you 😂')
+    if (message.author.id === '524276585214378034') return;
 
     const randomXp = Math.floor(Math.random() * 9) + 1; //Random amont of XP until the number you want + 1
     const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXp);
