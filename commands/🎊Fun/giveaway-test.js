@@ -6,6 +6,8 @@ module.exports = {
     guildOnly: true,
     ownerOnly: true,
     async execute(message, args, client) {
+        const Discord = require('discord.js')
+        const ms = require('ms')
         const messageArray = message.content.split(" ");
         if (!message.member.hasPermission(["ADMINISTRATOR"])) return message.channel.send("You don't have enough permissions to start a giveaway !")
         var item = "";
