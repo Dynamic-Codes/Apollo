@@ -5,7 +5,7 @@ module.exports = {
     usage: '{time s/m/d} {item}',
     guildOnly: true,
     ownerOnly: true,
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const messageArray = message.content.split(" ");
         if (!message.member.hasPermission(["ADMINISTRATOR"])) return message.channel.send("You don't have enough permissions to start a giveaway !")
         var item = "";
