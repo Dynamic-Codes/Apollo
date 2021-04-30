@@ -11,7 +11,7 @@ module.exports = {
         const res = await fetch(url);
         const json = await res.json();
         const posts = json.data
-            .filter(f => msg.channel.nsfw || !f.nsfw);
+            .filter(f => message.channel.nsfw || !f.nsfw);
 
         if (!posts.length) return message.channel.send("No posts, maybe try in a nsfw channel");
 
