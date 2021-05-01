@@ -33,14 +33,14 @@ module.exports = {
         const reason = args[1] ? args.slice(1).join(' ') : 'no reason';
 
         const embed = new MessageEmbed()
-            .setFooter(`${message.author.tag} | ${message.author.id}`, message.author.displayAvatarURL({ dynamic: true }));
+            .setFooter(`ApolloProject`, message.author.displayAvatarURL({ dynamic: true }));
 
         message.guild.fetchBans().then( bans => {
 
             const user = bans.find(ban => ban.user.id === member.id );
 
             if (user) {
-                embed.setTitle(`Successfully Unbanned ${user.user.tag}`)
+                embed.setTitle(`⭐Unbanned User`)
                     .setColor('#00ff00')
                     .addField('User ID', user.user.id, true)
                     .addField('user Tag', user.user.tag, true)
@@ -49,7 +49,7 @@ module.exports = {
                 message.guild.members.unban(user.user.id, reason).then(() => message.channel.send(embed))
             } else {
                 embed.setTitle(`User ${member.tag} isn't banned!`)
-                    .setColor('#ff0000')
+                    .setColor('#ff00ff')
                 message.channel.send(embed)
             }
 
