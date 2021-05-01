@@ -13,7 +13,7 @@ module.exports = {
             let memeImage = content[0].data.children[0].data.url;
             let memeTitle = content[0].data.children[0].data.title;
             let memeUpvotes = content[0].data.children[0].data.ups;
-            let memeDownvotes = content[0].data.children[0].datsa.downs;
+            let memeDownvotes = content[0].data.children[0].data.downs;
             let memeNumComments = content[0].data.children[0].data.num_comments;
             embed.setTitle(`${memeTitle}`)
             embed.setURL(`${memeUrl}`)
