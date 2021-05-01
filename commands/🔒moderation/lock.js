@@ -15,28 +15,26 @@ module.exports = {
         const UnlockEmb = new Discord.MessageEmbed()
         .setTitle('🔓 LOCKDOWN DISABLED')
 
-
+        
         if (args[0] === 'on') {
             channels.forEach(channel => {
                 channel.updateOverwrite(message.guild.roles.everyone, {
                     SEND_MESSAGES: false
                 }).then(() => {
                     channel.setName(channel.name += `🔒`)
-                    channel.send(LockEmb)
                 })
             })
-            return message.channel.send('locked all channels');
+            return message.channel.send(LockEmb)
         } else if (args[0] === 'off') {
             channels.forEach(channel => {
                 channel.updateOverwrite(message.guild.roles.everyone, {
                     SEND_MESSAGES: true
                 }).then(() => {
                         channel.setName(channel.name.replace('🔒', ''))
-                        channel.send(UnlockEmb)
                     }
                 )
             })
-            return message.channel.send('unlocked all channels')
+            return message.channel.send(UnlockEmb)
         }
     }
 };
