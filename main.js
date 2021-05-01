@@ -21,7 +21,7 @@ const commandFolders = fs.readdirSync('./commands');
 //     require(`./handler/${handler}`)(client, Discord);
 // })
 
-const snipes = new Discord.Collections()
+const snipes = new Discord.Collection()
 
 client.on('messageDelete', messsage =>{
     snipes.set(messsage.channel.id, message)
