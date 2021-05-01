@@ -21,6 +21,12 @@ const commandFolders = fs.readdirSync('./commands');
 //     require(`./handler/${handler}`)(client, Discord);
 // })
 
+const snipes = new Discord.Collections()
+
+client.on('messageDelete', messsage =>{
+    snipes.set(messsage.channel.id, message)
+})
+
 
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
@@ -79,7 +85,7 @@ client.on('message', async message => {
     }
 
 	try {
-        command.execute(message, args, client);
+        command.execute(message, args, client, snipes);
         
 	} catch (error) {
         const errChnl = client.channels.cache.find(channel => channel.id === '833739612018049065')
