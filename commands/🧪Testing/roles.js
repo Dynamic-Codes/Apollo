@@ -13,15 +13,15 @@ module.exports = {
         // if (rolemap.length > 1024) rolemap = `To many roles to display! Map Length: ${rolemap.length}`;
         // if (!rolemap) rolemap = "No roles";
 
-        // trimString = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
+        trimString = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 
-        // console.log(trimString(rolemap, 2047))
+        console.log(trimString(rolemap, 2047))
 
-        rolemap1 = rolemap.split(2048)
+        let exceedmap = (trimString(rolemap, 2047))
 
         const embed = new Discord.MessageEmbed()
         .setTitle('Server Role Map')
-        .setDescription(rolemap1)
+        .setDescription(exceedmap)
         .setFooter('ApolloProject')
         message.channel.send(embed);
     }
