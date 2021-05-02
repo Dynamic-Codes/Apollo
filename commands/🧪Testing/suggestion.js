@@ -7,7 +7,9 @@ module.exports = {
     aliases: ['idea', 'suggestions'],
     execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
-        const db = require('quick.db')                  
+        const db = require('quick.db')    
+        
+        message.channel.bulkDelete(1)
         
         let embed = new MessageEmbed()
         .setAuthor("SUGGESTION: " + message.author.tag, message.author.avatarURL())

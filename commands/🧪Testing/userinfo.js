@@ -7,6 +7,8 @@ module.exports = {
     async execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
         const moment = require("moment")
+
+        message.channel.bulkDelete(1)
         
         let user;
 
