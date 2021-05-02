@@ -15,7 +15,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setTitle('Server Role Map')
-        .addDescription(rolemap)
+        .setDescription(rolemap)
         .setFooter('ApolloProject')
         message.channel.send(embed);
     }
