@@ -8,7 +8,7 @@ module.exports = {
         let rolemap = message.guild.roles.cache
         .sort((a, b) => b.position - a.position)
         .map(r => r)
-        .join(",");
+        .join("\n");
 
         if (rolemap.length > 1024) rolemap = "To many roles to display";
         if (!rolemap) rolemap = "No roles";
