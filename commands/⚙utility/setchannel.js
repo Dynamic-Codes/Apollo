@@ -11,6 +11,19 @@ module.exports = {
 
         message.channel.bulkDelete(1)
 
+        if(!message.member.permissions.has("MANAGE_GUILD")){
+			const PermErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('Missing Permission!')
+			.setDescription('Seems like you don\'t have the correct permission to use this command! Yikes..')
+			.addFields(
+				{name: '__User:__' , value: `\`${message.author.username}\``, inline: true},
+				{name: '__Permission:__' , value: '`MANAGEGUILD`',inline: true},
+			)
+			.setColor(5158332)
+			.setFooter('Fact: Apollo was first named after a poll command!')
+			return message.reply(PermErrorEmbed)
+        }
+
         let channel = message.mentions.channels.first()
 
         if(!channel){
