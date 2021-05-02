@@ -7,6 +7,7 @@ module.exports = {
     aliases: ['idea', 'suggestions'],
     execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
+        const db = require('quick.db')
 
         let channel = message.guild.channels.cache.find((x) => (x.name === "suggestion" || x.name === "suggestions"))
     
@@ -23,14 +24,19 @@ module.exports = {
         .setDescription(args.join(" "))
         .setTimestamp()
         
-        
-        channel.send(embed).then(m => {
+        let chx = db.get(`sugchannel_${member.guild.id}`);
+
+        if(chx === null) {
+            return message.reply('⚠ | This server has not set there suggestion channel.')
+        }
+
+        client.channels.cache.get(chx).send(embed).then(m => {
         m.react("✅")
         m.react("❌")
         })
         
 
         
-        message.channel.send("Sended Your Suggestion to " + channel)
+        message.channel.send("Suggestion Sent!")
     }
 };
