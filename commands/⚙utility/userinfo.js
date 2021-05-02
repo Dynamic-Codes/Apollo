@@ -84,7 +84,7 @@ module.exports = {
             .addField("Account Created At", moment(user.user.createdAt).format("LLLL"))
             .addField("Common Information", `ID: \`${user.user.id}\`\nDiscriminator: ${user.user.discriminator}\nBot: ${user.user.bot}\nDeleted User: ${user.deleted}`)
             .addField("Badges", newbadges.join(", ").toLowerCase() || "None")
-            .addField("Roles",  user.roles.map(r => `${r}`).join(' , '))
+            .addField("Roles",  user.user.roles.map(r => `${r}`).join(' , '))
             .setFooter(user.user.presence.status, stat[user.user.presence.status])
 
 
