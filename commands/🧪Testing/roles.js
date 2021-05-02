@@ -12,9 +12,11 @@ module.exports = {
 
         if (rolemap.length > 1024) rolemap = "To many roles to display";
         if (!rolemap) rolemap = "No roles";
-        
-        const embed = Discord.MessageEmbed()
+
+        const embed = new Discord.MessageEmbed()
+        .setTitle('Server Role Map')
         .addField("Role List" , rolemap)
+        .setFooter('ApolloProject')
         message.channel.send(embed);
     }
 };
