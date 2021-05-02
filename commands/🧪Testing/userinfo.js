@@ -4,7 +4,7 @@ module.exports = {
     usage: '<@user>',
     guildOnly: true,
     aliases: ['user'],
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
         const moment = require("moment")
         
