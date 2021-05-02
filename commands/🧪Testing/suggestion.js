@@ -16,7 +16,7 @@ module.exports = {
         .setDescription(args.join(" "))
         .setTimestamp()
         
-        let chx = db.get(`sugchannel_${member.guild.id}`);
+        let chx = db.get(`sugchannel_${message.author.guild.id}`);
 
         if(chx === null) {
             return message.reply('⚠ | This server has not set there suggestion channel.')
