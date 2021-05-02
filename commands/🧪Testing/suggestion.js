@@ -7,15 +7,7 @@ module.exports = {
     aliases: ['idea', 'suggestions'],
     execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
-        const db = require('quick.db')
-
-        let channel = message.guild.channels.cache.find((x) => (x.name === "suggestion" || x.name === "suggestions"))
-    
-    
-        if(!channel) {
-        return message.channel.send("there is no channel with name - suggestions")
-        }
-                                                        
+        const db = require('quick.db')                  
         
         let embed = new MessageEmbed()
         .setAuthor("SUGGESTION: " + message.author.tag, message.author.avatarURL())
