@@ -16,7 +16,7 @@ module.exports = {
         }
 
         if(args[0] === 'suggestion') {
-            db.set(`sugchannel_${message.guild.id}}`, channel.id)
+            db.set(`sugchannel_${message.guild.id}`, channel.id)
             return message.channel.send(`✅| Suggestion channel set to ${channel}!`)
         } else {
             message.reply('⚠ | No setting found or an error occured!')
