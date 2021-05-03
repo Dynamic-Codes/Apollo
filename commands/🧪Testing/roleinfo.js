@@ -4,7 +4,7 @@ module.exports = {
     args: true,
     usage: '<role-id>',
     guildOnly: true,
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const Discord = require('discord.js')
         let role;
         if(args[0] && isNaN(args[0]) && message.mentions.roles.first()) role = message.mentions.roles.first()
@@ -30,9 +30,44 @@ module.exports = {
             .setAuthor(message.guild.name,message.guild.iconURL())
             .setDescription(`**Role Name:** ${role.name} (<@&${role.id}>) \n\n**Role ID:** **\`${role.id}\`**\n\n**Role Mentionable:** ${role.mentionable.toString().replace("true","Yes").replace("false","No")}\n\n\n**Role Members Size:** ${role.members.size || 0}`)
             .addField("Role Members;",rolemembers || "Not Found")
-            .addField("Role Permissions", perms.join(' | '))
             .setFooter('Apollo Project')
 
         message.channel.send(embed)
+
+        try {
+            const roleName = message.guild.roles.cache.find(r => (r.name === args.toString()) || (r.id === args.toString()))
+            console.log(roleName)
+            const perms = new Permissions(roleName.permissions.bitfield).toArray()
+
+            const embed = new MessageEmbed()
+                .setColor(roleName.color)
+                .setTitle(roleName.name)
+                .addFields(
+                    {
+                        name: 'Role ID: ',
+                        value: roleName.id,
+                        inline: true
+                    },
+                    {
+                        name: 'Role Name: ',
+                        value: roleName.name,
+                        inline: true
+                    },
+                    {
+                        name: 'Mentionable: ',
+                        value: roleName.mentionable ? 'Yes' : 'No',
+                        inline: true
+                    },
+                    {
+                        name: 'Role Permissions: ',
+                        value: perms.join(', ')
+                    }
+                )
+
+            await message.channel.send(embed)
+
+        } catch (e) {
+            return message.channel.send('Role Doesn\'t Exist').then(() => console.log(e))
+        }
     }
 };
