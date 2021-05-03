@@ -23,11 +23,15 @@ module.exports = {
         if(role.members.size > 20) rolemembers = role.members.map(e => `<@${e.id}>`).slice(0,20).join(", ") + ` and ${role.members.size - 20} more members...`
         if(role.members.size < 20) rolemembers = role.members.map(e => `<@${e.id}>`).join(", ")
 
+        const perms = new Permissions(role.permissions.bitfield).toArray()
+
         let embed = new Discord.MessageEmbed()
             .setColor(role.color)
             .setAuthor(message.guild.name,message.guild.iconURL())
-            .setDescription(`**Role Name:** ${role.name}(<@&${role.id}>)\n\n**Role ID:** **\`${role.id}\`**\n\n**Role Mentionable:** ${role.mentionable.toString().replace("true","Yes").replace("false","No")}\n\n**Role Members Size:** ${role.members.size || 0}`)
+            .setDescription(`**Role Name:** ${role.name} (<@&${role.id}>) \n\n**Role ID:** **\`${role.id}\`**\n\n**Role Mentionable:** ${role.mentionable.toString().replace("true","Yes").replace("false","No")}\n\n\n**Role Members Size:** ${role.members.size || 0}`)
             .addField("Role Members;",rolemembers || "Not Found")
+            .addField("Role Permissions", perms.join(' | '))
+            .setFooter('Apollo Project')
 
         message.channel.send(embed)
     }
