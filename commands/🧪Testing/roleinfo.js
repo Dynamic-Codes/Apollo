@@ -37,7 +37,7 @@ module.exports = {
         try {
             const roleName = message.guild.roles.cache.find(r => (r.name === args.toString()) || (r.id === args.toString()))
             console.log(roleName)
-            const perms = new Permissions(roleName.permissions.bitfield).toArray()
+            const perms = new permissions(roleName.permissions.bitfield).toArray()
 
             const embed = new MessageEmbed()
                 .setColor(roleName.color)
