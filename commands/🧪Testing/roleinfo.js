@@ -23,8 +23,6 @@ module.exports = {
         if(role.members.size > 20) rolemembers = role.members.map(e => `<@${e.id}>`).slice(0,20).join(", ") + ` and ${role.members.size - 20} more members...`
         if(role.members.size < 20) rolemembers = role.members.map(e => `<@${e.id}>`).join(", ")
 
-        const perms = new Permissions(role.permissions.bitfield).toArray()
-
         let embed = new Discord.MessageEmbed()
             .setColor(role.color)
             .setAuthor(message.guild.name,message.guild.iconURL())
