@@ -5,6 +5,7 @@ module.exports = {
     usage: '<role-id>',
     guildOnly: true,
     execute(message, args, client) {
+        const Discord = require('discord.js')
         let role;
         if(args[0] && isNaN(args[0]) && message.mentions.roles.first()) role = message.mentions.roles.first()
         if(args[0] && isNaN(args[0]) && !message.mentions.roles.first()){
