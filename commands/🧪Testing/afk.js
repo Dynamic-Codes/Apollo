@@ -8,20 +8,22 @@ module.exports = {
         const db = require('../../models/afk-schema')
         
         const { guild, author } = message;
+        const reason = args.join(" ")
 
         await db.findOne({ guildId: guild.id, userId: author.id }, async (err, res) => {
             if (err) return message.reply("⚠ | Could not establish connection to `Proxima B` Database!")
             if (!res) {
                 const newData = new db({
+                    afkReason: reason,
                     guildId: guild.id,
                     userId: author.id
                 })
                 newData.save().then(() => {
-                    return message.reply('✅ | Set your status to afk!')
+                    return message.reply('⛔ | Set your status to afk!')
                 })
             } else if (res) {
                 await db.findOneAndDelete({ guildId: guild.id, userId: author.id }).then(() => {
-                    return message.reply('✅ | Set your status to not afk any more!')
+                    return message.reply('💬 | Removed afk status')
                 })
 
             }

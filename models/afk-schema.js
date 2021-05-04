@@ -6,6 +6,7 @@ const reqString = {
 }
 
 const schema = new mongoose.Schema({
+    afkReason: reqString,
     guildId: reqString,
     userId: reqString
 })
