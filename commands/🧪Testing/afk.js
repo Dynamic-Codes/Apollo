@@ -19,7 +19,7 @@ module.exports = {
                 newData.save().then(() => {
                     return message.reply('✅ | Set your status to afk!')
                 })
-            } else if (data) {
+            } else if (res) {
                 await db.findOneAndDelete({ guildId: guild.id, userId: author.id }).then(() => {
                     return message.reply('✅ | Set your status to not afk any more!')
                 })
