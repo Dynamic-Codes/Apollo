@@ -122,7 +122,7 @@ client.on('message', async message => {
     await db.findOne({ guildId: message.guild.id, userId: user.id }, async (err, res) => {
         if (err && !res) return
         if (res) {
-            return message.reply(`${user} is AFK!`)
+            return message.reply(`${user} is AFK! Reason: ${db.afkReason}`)
         }
     })
 })
