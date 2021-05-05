@@ -118,16 +118,16 @@ client.on('message', async message => {
     if (await Afk.findOne({ userID: message.author.id })) {
         let afkProfile = await Afk.findOne({ userID: message.author.id });
         if (afkProfile.messagesLeft == 0) {
-            await Afk.findByIdAndDelete({ userID: message.author.id })
+            await Afk.findOneAndDelete({ userID: message.author.id })
             message.channel.send('꒰💬꒱ ꒦ You are no longer AFK! ꒷')
         } else {
-            await Afk.findByIdAndUpdate({ userID: message.author.id }, {messagesLeft: afkProfile.messagesLeft - 1});
+            await Afk.findOneAndUpdate({ userID: message.author.id }, {messagesLeft: afkProfile.messagesLeft - 1});
         }
     }
 
     if(message.mentions.members.first()) {
         await message.mentions.members.forEach(async member => {
-            let afkProfile = await Afk.findOne({ userID: message.author.id });
+            let afkProfile = await Afk.findOne({ userID: member.user.id });
             if (afkProfile) message.channel.send(`꒰${member.user.tag}꒱ ꒦ Is currently AFK for reason: ${afkProfile.reason} ꒷`)
         })
     }
