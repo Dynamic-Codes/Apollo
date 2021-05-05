@@ -1,7 +1,6 @@
 module.exports = {
     name: 'afk',
     description: 'Set your self afk with a neat message',
-    args: true,
     usage: '<reason>',
     guildOnly: true,
     async execute(message, args, client) {
