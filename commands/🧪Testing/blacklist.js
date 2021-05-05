@@ -6,6 +6,7 @@ module.exports = {
     guildOnly: true,
     ownerOnly: true,
     async execute(message, args, client) {
+        const mongoose = require('mongoose')
         const Blacklist = require('../../models/blackListSchema')
         const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         let reason = args.slice(1).join(" ")
