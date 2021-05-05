@@ -43,6 +43,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
+const Blacklist = require('./models/blackListSchema')
 
 client.on('message', async message => {
     if (message.author.bot) return;
@@ -64,6 +65,11 @@ client.on('message', async message => {
 	    ||client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
     if (!command) return;
+
+    let profile = await Blacklist.findOne({
+        userID: message.author.id
+    })
+    if (profile) return message.reply('꒰🔐꒱ ꒦ You are banned from using the bot! ꒷')
     
     if (command.ownerOnly && message.author.id !== owner) {
         return message.reply('Permission Type Error! You are not the owner of the bot.')
