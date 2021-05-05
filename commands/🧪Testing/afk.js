@@ -15,7 +15,7 @@ module.exports = {
         });
         if (!afkProfile) {
             afkProfile = await new Afk({
-                _id: Mongoose.Types.ObjectId(),
+                _id: mongoose.Mongoose.Types.ObjectId(),
                 userID: message.author.id,
                 reason: reason,
             });
