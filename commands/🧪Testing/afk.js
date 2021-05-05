@@ -5,28 +5,22 @@ module.exports = {
     usage: '<reason>',
     guildOnly: true,
     async execute(message, args, client) {
-        const db = require('../../models/afk-schema')
-        
-        const { guild, author } = message;
-        const reason = args.join(" ")
+        const Afk = require('../../models/afkSchema');
+        const mongoose = require('mongoose')
 
-        await db.findOne({ guildId: guild.id, userId: author.id }, async (err, res) => {
-            if (err) return message.reply("⚠ | Could not establish connection to `Proxima B` Database!")
-            if (!res) {
-                const newData = new db({
-                    afkReason: reason,
-                    guildId: guild.id,
-                    userId: author.id
-                })
-                newData.save().then(() => {
-                    return message.reply('⛔ | Set your status to afk!')
-                })
-            } else if (res) {
-                await db.findOneAndDelete({ guildId: guild.id, userId: author.id }).then(() => {
-                    return message.reply('💬 | Removed afk status')
-                })
-
-            }
-        })
-    }
+        let reason = args.join(" ")
+        if(!reason) reason = "Not set by user."
+        let afkProfile = await Afk.findOne({
+            userID: message.author.id
+        });
+        if (!afkProfile) {
+            afkProfile = await new Afk({
+                _id: mongoose.Schema.Types.ObjectId(),
+                userID: message.author.id,
+                reason: reason,
+            });
+            await afkProfile.save()
+            message.channel.send('꒰⛔꒱ ꒦ Your status is now set to AFK! ꒷');
+        } else return message.channel.send('꒰ℹ꒱ ꒦ You are already AFK! ꒷');
+    },
 };
