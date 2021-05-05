@@ -7,7 +7,7 @@ module.exports = {
     ownerOnly: true,
     async execute(message, args, client) {
         const Blacklist = require('../../models/blackListSchema')
-        const mentionedMember = message.mentions.first() || message.guild.members.cache.get(args[0]);
+        const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         let reason = args.slice(1).join(" ")
 
         if (!mentionedMember) return message.channel.send('꒰⚠꒱ ꒦ Could not find the user! ꒷')
