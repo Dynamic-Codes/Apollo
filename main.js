@@ -114,6 +114,8 @@ mongoose.connect(mongodb_srv, {
 })
 
 client.on('message', async message => {
+    if (message.author.bot) return;
+
     const Afk = require('./models/afkSchema')
     if (await Afk.findOne({ userID: message.author.id })) {
         let afkProfile = await Afk.findOne({ userID: message.author.id });
@@ -141,7 +143,8 @@ const activities_list = [
     "exploration misson!",
     "alien radio transmission!",
     "I don't know?",
-    "How to skate on Europa!"
+    "How to skate on Europa!",
+    "How to not be AFK"
     ]; // creates an arraylist containing phrases you want your bot to switch through.
 
 client.on('ready', () => {
