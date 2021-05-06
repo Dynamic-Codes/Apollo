@@ -44,9 +44,10 @@ module.exports = {
             .setTitle(`${message.guild.name}'s Settings:`)
             .setDescription(`If you are seeing no fields below, that means you have not done the setup yet!\nProperties: suggestionChannel, muteRoleID`)
             .setColor("BLUE")
-
-        if (guildProfile.suggestionChannel) SettingEmbed.addFields(`Suggestion Channel`, guildProfile.suggestionChannel);
-        if (guildProfile.muteRoleID) SettingEmbed.addFields(`Mute Role`, guildProfile.muteRoleID);
+        
+        if (guildProfile.prefix) SettingEmbed.addField(`Server Prefix`, guildProfile.prefix);
+        if (guildProfile.suggestionChannel) SettingEmbed.addField(`Suggestion Channel`, guildProfile.suggestionChannel);
+        if (guildProfile.muteRoleID) SettingEmbed.addField(`Mute Role`, guildProfile.muteRoleID);
 
         message.channel.send(SettingEmbed)
 
