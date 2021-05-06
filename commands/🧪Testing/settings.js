@@ -34,7 +34,7 @@ module.exports = {
 
         if (!guildProfile) {
             guildProfile = await new Guild({
-                _id: mongoose.Types.ObjectId,
+                _id: mongoose.Types.ObjectId(),
                 guildID: message.guild.id,
             });
             await guildProfile.save().catch(err => console.log(err));
