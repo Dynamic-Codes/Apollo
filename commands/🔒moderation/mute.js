@@ -5,7 +5,7 @@ module.exports = {
     usage: '<@user> <time> [reason]',
     guildOnly: true,
     aliases: ['tempmute'],
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const Discord = require('discord.js')
         const ms = require('ms')
         const { MessageEmbed } = require('discord.js')
