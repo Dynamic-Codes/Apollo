@@ -5,7 +5,7 @@ module.exports = {
     usage: '<Suggestion>',
     guildOnly: true,
     aliases: ['idea', 'suggestions'],
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
         const Guild = require('./models/guildSchema')
         let guildProfile = await Guild.findOne({

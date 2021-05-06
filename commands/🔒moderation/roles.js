@@ -15,8 +15,6 @@ module.exports = {
 
         trimString = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 
-        console.log(trimString(rolemap, 2047))
-
         let exceedmap = (trimString(rolemap, 2047))
 
         const embed = new Discord.MessageEmbed()
