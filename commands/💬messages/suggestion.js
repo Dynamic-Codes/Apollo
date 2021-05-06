@@ -7,7 +7,10 @@ module.exports = {
     aliases: ['idea', 'suggestions'],
     execute(message, args, client) {
         const { MessageEmbed } = require("discord.js")
-        const db = require('quick.db')    
+        const Guild = require('./models/guildSchema')
+        let guildProfile = await Guild.findOne({
+            guildID: message.guild.id
+        });
         
         message.channel.bulkDelete(1)
         
@@ -18,10 +21,10 @@ module.exports = {
         .setDescription(args.join(" "))
         .setTimestamp()
         
-        let chx = db.get(`sugchannel_${message.guild.id}`);
+        let chx = guildProfile.suggestionChannel;
 
         if(chx === null) {
-            return message.reply('⚠ | This server has not set there suggestion channel.')
+            return message.reply('꒰ℹ꒱ ꒦ This server has not setup there suggetsion channel. ꒷')
         }
 
         client.channels.cache.get(chx).send(embed).then(m => {
