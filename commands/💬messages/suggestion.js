@@ -27,7 +27,7 @@ module.exports = {
             return message.reply('꒰ℹ꒱ ꒦ This server has not setup there suggetsion channel. ꒷')
         }
 
-        client.channels.cache.get(chx).send(embed).then(m => {
+        chx.send(embed).then(m => {
         m.react("✅")
         m.react("❌")
         })
