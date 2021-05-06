@@ -21,20 +21,23 @@ module.exports = {
         const muteRole = message.guild.roles.cache.get(guildRole);
 
         const mentionMember = message.mentions.members.first() || message.guild.cache.get(args[0])
+        const member = message.guild.members.resolve(mentionMember);
         let time = args[1]
         let reason = args.slice(2).join(" ")
 
         const muteEmbed = new MessageEmbed()
             .setTitle(`You have been muted in ${message.guild.name}`)
             .addField(`Duration: ${time}`, `Reason: ${reason}`)
+            .setColor('#ff00ff')
             .setTimestamp()
         
         const ChannelMute = new MessageEmbed()
-            .setTitle(`꒰🔇꒱ ꒦ Muted ${mentionMember} ꒷`)
+            .setTitle(`꒰🔇꒱ ꒦ Muted ${member.tag} ꒷`)
+            .setColor('#ff00ff')
             .setFooter(`Moderator: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         
         if (!mentionMember) return message.channel.send('꒰ℹ꒱ ꒦ The member is not in this server. ꒷')
-        if (!mentionMember.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('꒰⚠꒱ ꒦ You can not mute this member! ꒷')
+        if (mentionMember.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('꒰⚠꒱ ꒦ You can not mute this member! ꒷')
         if (!time) return message.channel.send(`꒰ℹ꒱ ꒦ You must state duration! Format: \`${guildProfile.prefix}mute @user 1m reason\` ꒷`)
         if (!reason) reason = 'No reason given.'
 
