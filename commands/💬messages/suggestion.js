@@ -23,8 +23,8 @@ module.exports = {
         
         let chx = guildProfile.suggestionChannel;
 
-        if(chx === null) {
-            return message.reply('꒰ℹ꒱ ꒦ This server has not setup there suggetsion channel. ꒷')
+        if(!guildProfile.suggestionChannel) {
+            return message.reply('꒰ℹ꒱ ꒦ This server has not setup there suggestion channel. ꒷')
         }
 
         client.channels.cache.get(chx).send(embed).then(m => {
