@@ -1,4 +1,4 @@
-const { prefix, owner, mongodb_srv } = require('./config.json');
+const { owner, mongodb_srv } = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
@@ -44,10 +44,24 @@ for (const file of commandFiles) {
 }
 
 const Blacklist = require('./models/blackListSchema')
+const Guild = require('./models/guildSchema')
 
 client.on('message', async message => {
     if (message.author.bot) return;
-    if (message.author.id === '524276585214378034') return;
+
+    let guildProfile = await Guild.findOne({
+        guildID: message.guild.id
+    });
+    
+    if (!guildProfile) {
+        guildProfile = await new Guild({
+            _id: mongoose.Types.ObjectId(),
+            guildID: message.guild.id,
+        });
+        await guildProfile.save().catch(err => console.log(err));
+    }
+
+    const prefix = guildProfile.prefix;
 
     const randomXp = Math.floor(Math.random() * 9) + 1; //Random amont of XP until the number you want + 1
     const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXp);
