@@ -32,7 +32,7 @@ module.exports = {
             .setTimestamp()
         
         const ChannelMute = new MessageEmbed()
-            .setTitle(`꒰🔇꒱ ꒦ Muted ${mentionMember.tag} ꒷`)
+            .setTitle(`꒰🔇꒱ ꒦ Muted User ꒷`)
             .setColor('#ff00ff')
             .setFooter(`Moderator: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         
