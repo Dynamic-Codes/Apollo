@@ -25,9 +25,13 @@ module.exports = {
         let reason = args.slice(2).join(" ")
 
         const muteEmbed = new MessageEmbed()
-            .setTitle(`You have been muted in ${message.guild.id}`)
+            .setTitle(`You have been muted in ${message.guild.name}`)
             .addField(`Duration: ${time}`, `Reason: ${reason}`)
             .setTimestamp()
+        
+        const ChannelMute = new MessageEmbed()
+            .setTitle(`꒰🔇꒱ ꒦ Muted ${mentionMember.tag} ꒷`)
+            .setFooter(`Moderator: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         
         if (!mentionMember) return message.channel.send('꒰ℹ꒱ ꒦ The member is not in this server. ꒷')
         if (!mentionMember.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('꒰⚠꒱ ꒦ You can not mute this member! ꒷')
@@ -36,6 +40,7 @@ module.exports = {
 
         await mentionMember.roles.add(muteRole).catch(err => console.log(err))
         await mentionMember.send(muteEmbed).catch(err => console.log(err))
+        message.channel.send(ChannelMute)
 
         setTimeout(async function () {
             await mentionMember.roles.remove(muteRole).catch(err => console.log(err))
