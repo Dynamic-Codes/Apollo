@@ -30,7 +30,7 @@ module.exports = {
             .setTimestamp()
         
         const ChannelMute = new MessageEmbed()
-            .setTitle(`꒰🔇꒱ ꒦ Muted ${mentionMember.tag} ꒷`)
+            .setTitle(`꒰🔇꒱ ꒦ Muted ${mentionMember} ꒷`)
             .setFooter(`Moderator: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
         
         if (!mentionMember) return message.channel.send('꒰ℹ꒱ ꒦ The member is not in this server. ꒷')
