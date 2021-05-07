@@ -19,7 +19,7 @@ module.exports = {
             const InviteEmbed = new Discord.MessageEmbed()
             .setTitle('Invite Me?!')
             .setURL('https://discord.com/oauth2/authorize?client_id=833353624762581023&scope=bot&permissions=8')
-            .setThumbnail(`https://media.discordapp.net/attachments/771698633887711232/790316510228119602/2936_Yayy.gif`)
+            .setThumbnail(`https://i.pinimg.com/originals/db/2f/8b/db2f8b3b06f2c3a38d0702f858f38729.gif`)
             .setDescription('Galactastic! Getting ready to be launched into your server.. [Invite Me](https://discord.com/oauth2/authorize?client_id=833353624762581023&scope=bot&permissions=8)')
             .addField('Why Invite Me?' , `Well you can enjoy all of the features in your own sever! ${CheckMoji}`)
             .addField('Need Support?', `Join our Support server! [Mission Control](https://discord.gg/2NYj5yHAGr)`)
