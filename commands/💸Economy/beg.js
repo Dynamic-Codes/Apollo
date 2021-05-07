@@ -8,7 +8,7 @@ module.exports = {
         const Discord = require('discord.js');
 
         const chance = Math.floor(Math.random() * 10) + 1;
-        if(chance >= 1 && chance <= 3) {
+        if(chance >= 1 && chance <= 6) {
             const array = [
                 'Apollo has kindly given you some',
                 'This star only had this much..',
