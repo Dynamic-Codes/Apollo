@@ -45,6 +45,7 @@ for (const file of commandFiles) {
 
 const Blacklist = require('./models/blackListSchema')
 const Guild = require('./models/guildSchema')
+const Balance = require('./models/balanceSchema')
 
 client.on('message', async message => {
     if (message.author.bot) return;
@@ -62,6 +63,22 @@ client.on('message', async message => {
     }
 
     const prefix = guildProfile.prefix;
+
+    const randomAmountOfCoins = Math.floor(Math.random() * 10) + 5; //give us 5 - 15 coins
+    const messageGive = Math.floor(Math.random() * 10) + 1; // get 1- 10
+    if (messageGive >= 2 && messageGive <= 5) {
+        let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id });
+        if (!balanceProfile) {
+            balanceProfile = await new Balance({
+                _id: mongoose.Types.ObjectId(),
+                userID: message.author.id,
+                guildID: message.guild.id,
+                lastEdited: Date.now(),
+            });
+            await balanceProfile.save().catch(err => console.log(err));
+        }
+        await Balance.findOne({ userID: message.author.id, guildID: message.guild.id }, { balance: balanceProfile.balance + randomAmountOfCoins, lastEdited: Date.now() })
+    }
 
     const randomXp = Math.floor(Math.random() * 9) + 1; //Random amont of XP until the number you want + 1
     const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXp);
