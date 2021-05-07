@@ -5,6 +5,7 @@ module.exports = {
     cooldown: 60,
     aliases: ['support', 'inv'],
     execute(message, args, client) {
+        const Discord = require('discord.js')
         CheckMoji = '<a:DinoBeeVerified:790307652663246889>'
         PartyMoji = '<a:DinoBeeYay:790316795088076852>'
         
