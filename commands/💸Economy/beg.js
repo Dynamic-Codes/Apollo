@@ -1,6 +1,7 @@
 module.exports = {
     name: 'beg',
     description: 'Gain some free credits or get rejected by space and time',
+    cooldown: 30,
     guildOnly: true,
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');

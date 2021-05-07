@@ -1,6 +1,7 @@
 module.exports = {
     name: 'ping',
     description: 'Display information about the bot!',
+    cooldown: 60,
     aliases: ['dashboard', 'response'],
     execute(message, args, client) {
         const Discord = require('discord.js')
