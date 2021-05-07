@@ -67,7 +67,7 @@ client.on('message', async message => {
     const randomAmountOfCoins = Math.floor(Math.random() * 10) + 5; //give us 5 - 15 coins
     const messageGive = Math.floor(Math.random() * 10) + 1; // get 1- 10
     if (messageGive >= 2 && messageGive <= 5) {
-        let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id }); p
+        let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id });
         if (!balanceProfile) {
             balanceProfile = await new Balance({
                 _id: mongoose.Types.ObjectId(),
