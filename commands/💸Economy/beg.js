@@ -1,9 +1,7 @@
 module.exports = {
-    name: 'balance',
-    description: 'Check your balance and flex!',
-    usage: '<@user>',
+    name: 'beg',
+    description: 'Gain some free credits or get rejected by space and time',
     guildOnly: true,
-    aliases: ['bal'],
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
         const mongoose = require('mongoose');
