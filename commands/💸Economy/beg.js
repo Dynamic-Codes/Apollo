@@ -25,17 +25,16 @@ module.exports = {
             const coinsToGive = Math.floor(Math.random() * 150) + 3; 
             message.channel.send(`${array[Math.floor(Math.random() * 8)]} :coin: ${coinsToGive} credits `)
 
-            let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id });
+            let balanceProfile = await Balance.findOne({ userID: message.author.id});
             if (!balanceProfile) {
                 balanceProfile = await new Balance({
                     _id: mongoose.Types.ObjectId(),
                     userID: message.author.id,
-                    guildID: message.guild.id,
                     lastEdited: Date.now(),
                 });
                 await balanceProfile.save().catch(err => console.log(err));
             }
-            await Balance.findOneAndUpdate({ userID: message.author.id, guildID: message.guild.id}, { balance: balanceProfile.balance + coinsToGive, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + coinsToGive, lastEdited: Date.now() });
         } else {
             const array = [
                 'This star burnt there credits! Yikes...',

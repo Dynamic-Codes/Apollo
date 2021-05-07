@@ -11,12 +11,11 @@ module.exports = {
 
         let mentionMember = message.member;
 
-        let balanceProfile = await Balance.findOne({ userID: mentionMember.id, guildID: message.guild.id });
+        let balanceProfile = await Balance.findOne({ userID: mentionMember.id});
         if (!balanceProfile) {
             balanceProfile = await new Balance({
                 _id: mongoose.Types.ObjectId(),
                 userID: mentionMember.id,
-                guildID: message.guild.id,
                 lastEdited: Date.now(),
             });
             await balanceProfile.save().catch(err => console.log(err));
