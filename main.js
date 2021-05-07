@@ -67,7 +67,7 @@ client.on('message', async message => {
     const randomAmountOfCoins = Math.floor(Math.random() * 10) + 5; //give us 5 - 15 coins
     const messageGive = Math.floor(Math.random() * 10) + 1; // get 1- 10
     if (messageGive >= 2 && messageGive <= 5) {
-        let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id });
+        let balanceProfile = await Balance.findOne({ userID: message.author.id, guildID: message.guild.id }); p
         if (!balanceProfile) {
             balanceProfile = await new Balance({
                 _id: mongoose.Types.ObjectId(),
@@ -77,7 +77,7 @@ client.on('message', async message => {
             });
             await balanceProfile.save().catch(err => console.log(err));
         }
-        await Balance.findOne({ userID: message.author.id, guildID: message.guild.id }, { balance: balanceProfile.balance + randomAmountOfCoins, lastEdited: Date.now() })
+        await Balance.findOneAndUpdate({ userID: message.author.id, guildID: message.guild.id }, { balance: balanceProfile.balance + randomAmountOfCoins, lastEdited: Date.now() })
     }
 
     const randomXp = Math.floor(Math.random() * 9) + 1; //Random amont of XP until the number you want + 1
