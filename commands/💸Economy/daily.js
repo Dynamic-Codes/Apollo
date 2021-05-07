@@ -26,5 +26,7 @@ module.exports = {
         .setDescription(`${GCoins}5000 have landed in your account!\n\nYou can get lots more by joining our support server and taking parts in events!\n[Mission Control](https://discord.gg/2NYj5yHAGr) `)
         .addField('Balance Now', `${GCoins}${balanceProfile.balance}`)
 
+        message.channel.send(embed)
+
     },
 };
