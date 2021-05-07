@@ -9,7 +9,7 @@ module.exports = {
         const mongoose = require('mongoose');
         const Discord = require('discord.js')
 
-        let mentionMember = message.mentions.members.first() || await  message.guild.members.fetch(args[0])
+        let mentionMember = message.member;
 
         let balanceProfile = await Balance.findOne({ userID: mentionMember.id, guildID: message.guild.id });
         if (!balanceProfile) {
@@ -23,11 +23,11 @@ module.exports = {
         }
 
         const BalEmbed = new Discord.MessageEmbed()
-            .setTitle(`${mentionMember}'s Balance`)
+            .setTitle(`${mentionMember.user.tag}'s Balance`)
             .addField(`Space Credits`, `:coin: ${balanceProfile.balance}`)
             .setColor('#5234d9')
             .setTimestamp()
-            .setFooter(message.author.displayAvatarURL({ dynamic: true }))
+            .setFooter('ApolloProject', message.author.displayAvatarURL({ dynamic: true }))
         
         message.channel.send(BalEmbed)
     }
