@@ -4,7 +4,7 @@ module.exports = {
         const Discord = require('discord.js')
         message.channel.send(
             new Discord.MessageEmbed()
-                .setColour('RED')
+                .setColor('RED')
                 .SetAuthor('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
                 .setDescription(
                     `**Author:** ${message.author.username}#${message.author.discriminator}
