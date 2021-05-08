@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'messageDelete',
-	execute(message, client) {
+	async execute(message, client) {
         const Guild = require('../../models/guildSchema')
         let guildProfile = await Guild.findOne({
             guildID: message.guild.id
