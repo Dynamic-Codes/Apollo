@@ -4,13 +4,14 @@ module.exports = {
         const Discord = require('discord.js')
         message.channel.send(
             new Discord.MessageEmbed()
-                .setColor('RED')
-                .SetAuthor('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
+                .setTitle('Apollo Log | DELETE')
                 .setDescription(
                     `**Author:** ${message.author.username}#${message.author.discriminator}
                     **Channel:** ${message.channel}
                     **Content:** \`\`\`${message.content}\`\`\``
                 )
+                .setColor('RED')
+                .SetFooter('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
         )
 	},
 };
