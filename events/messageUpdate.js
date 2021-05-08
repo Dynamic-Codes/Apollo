@@ -1,8 +1,17 @@
 module.exports = {
 	name: 'messageUpdate',
 	async execute(oldMessage, newMessage) {
+        const Guild = require('../../models/guildSchema')
+        let guildProfile = await Guild.findOne({
+            guildID: message.guild.id
+        });
+
+        let chx = guildProfile.auditLogID;
+
+        if(!guildProfile.auditLogID) return;
+
         const Discord = require('discord.js')
-        oldMessage.channel.send(
+        client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
                 .setDescription(
                     `**Author:** ${oldMessage.author.username}#${oldMessage.author.discriminator}
@@ -11,7 +20,7 @@ module.exports = {
                     **After** \`\`\`${newMessage.content}\`\`\``
                 )
                 .setColor('YELLOW')
-                .setFooter('Message Delete', oldMessage.author.displayAvatarURL({ dynamic: true }))
+                .setFooter('Message Edited', oldMessage.author.displayAvatarURL({ dynamic: true }))
         )
 	},
 };
