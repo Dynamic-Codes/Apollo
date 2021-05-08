@@ -1,9 +1,9 @@
 module.exports = {
-	name: 'userUpdate',
-	async execute(oldUser, newUser, client) {
+	name: 'messageDeleteBulk',
+	async execute(messages) {
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
-            guildID: oldMessage.guild.id
+            guildID: message.guild.id
         });
 
         let chx = guildProfile.auditLogID;
@@ -14,11 +14,11 @@ module.exports = {
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
                 .setDescription(
-                    `**User Before** ${oldUser.username}#${oldUser.discriminator}
-                    **User After** ${newUser.usename}#${newUser.discriminator}`
+                    `**Channel:** ${messages.channel}
+                    **Content:** \`\`\`${message.content}\`\`\``
                 )
-                .setColor('PURPLE')
-                .setFooter('User Updated', oldMessage.author.displayAvatarURL({ dynamic: true }))
+                .setColor('ORANGE')
+                .setFooter('Message Bulk Delete')
         )
 	},
 };
