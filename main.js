@@ -14,13 +14,8 @@ Levels.setURL(mongodb_srv)
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
-// client.events = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
-
-// ['event_handler'].forEach(handler =>{
-//     require(`./handler/${handler}`)(client, Discord);
-// })
 
 const snipes = new Discord.Collection()
 
@@ -28,6 +23,16 @@ client.on('messageDelete', message =>{
     snipes.set(message.channel.id, message)
 })
 
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args, client));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args, client));
+	}
+}
 
 for (const folder of commandFolders) {
 	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
