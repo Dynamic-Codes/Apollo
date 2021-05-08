@@ -3,7 +3,7 @@ module.exports = {
 	async execute(messages) {
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
-            guildID: message.guild.id
+            guildID: messages.guild.id
         });
 
         let chx = guildProfile.auditLogID;
