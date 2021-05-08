@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'messageDelete',
 	execute(message, client) {
-		const LOG = getLog.entries.first()
+		const LOG = GuildAuditLog.entries.first()
         if (!LOG) return;
 
         const { executor } = LOG;
