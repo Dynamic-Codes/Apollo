@@ -15,7 +15,7 @@ module.exports = {
             new Discord.MessageEmbed()
                 .setDescription(
                     `**Channel:** ${messages.channel}
-                    **Content:** \`\`\`${message.content}\`\`\``
+                    **Content:** \`\`\`${messages.content}\`\`\``
                 )
                 .setColor('ORANGE')
                 .setFooter('Message Bulk Delete')
