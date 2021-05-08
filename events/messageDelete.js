@@ -11,7 +11,7 @@ module.exports = {
                     **Content:** \`\`\`${message.content}\`\`\``
                 )
                 .setColor('RED')
-                .SetFooter('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
+                .setFooter('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
         )
 	},
 };
