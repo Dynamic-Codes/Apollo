@@ -2,7 +2,7 @@ module.exports = {
 	name: 'messageUpdate',
 	async execute(oldMessage, newMessage) {
         const Discord = require('discord.js')
-        message.channel.send(
+        oldMessage.channel.send(
             new Discord.MessageEmbed()
                 .setDescription(
                     `**Author:** ${oldMessage.author.username}#${oldMessage.author.discriminator}
