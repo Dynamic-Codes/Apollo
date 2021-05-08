@@ -41,10 +41,11 @@ module.exports = {
             if (guildProfile.prefix) SettingEmbed.addField(`Server Prefix`, guildProfile.prefix);
             if (guildProfile.suggestionChannel) SettingEmbed.addField(`Suggestion Channel`, guildProfile.suggestionChannel);
             if (guildProfile.muteRoleID) SettingEmbed.addField(`Mute Role`, guildProfile.muteRoleID);
+            if (guildProfile.auditLogID) SettingEmbed.addField(`Audit Log`, guildProfile.auditLogID);
 
             message.channel.send(SettingEmbed)
         } else {
-            if (!["prefix", "suggestionChannel", "muteRoleID"].includes(args[0])) return message.channel.send('꒰⚠꒱ ꒦ You need to state a valid property to update. ꒷')
+            if (!["prefix", "suggestionChannel", "muteRoleID", "auditLogID"].includes(args[0])) return message.channel.send('꒰⚠꒱ ꒦ You need to state a valid property to update. ꒷')
             if (!args[1]) return message.channel.send('꒰⚠꒱ ꒦ You need to state the updated value. ꒷')
 
             if ("prefix" === args[0]) {
@@ -55,6 +56,9 @@ module.exports = {
                 message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
             } else if ("muteRoleID" === args[0]) {
                 await Guild.findOneAndUpdate({ guildID: message.guild.id }, { muteRoleID: args[1], lastEdited: Date.now() })
+                message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
+            } else if ("auditLogID" === args[0]) {
+                await Guild.findOneAndUpdate({ guildID: message.guild.id }, { auditLogID: args[1], lastEdited: Date.now() })
                 message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
             }
         }

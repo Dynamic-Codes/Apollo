@@ -147,7 +147,7 @@ client.on('message', async message => {
         command.execute(message, args, client, snipes);
         
 	} catch (error) {
-        const errChnl = client.channels.cache.find(channel => channel.id === '833739612018049065')
+        const errChnl = client.channels.cache.find(channel => channel.id === '840291138538831888')
 		console.error(error);
         message.reply('there was an error trying to execute that command!');
         message.channel.send(`\`${error}\``)

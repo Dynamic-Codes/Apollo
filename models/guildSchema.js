@@ -6,7 +6,8 @@ const guildSchema = new mongoose.Schema({
     lastEdited: String,
     prefix: { type: String, default: "a!" },
     suggestionChannel: { type: String, required: false },
-    muteRoleID: { type: String, required: false}
+    muteRoleID: { type: String, required: false},
+    auditLogID: { type: String, required: false}
 })
 
 module.exports = mongoose.model("Guild", guildSchema, 'guilds')
