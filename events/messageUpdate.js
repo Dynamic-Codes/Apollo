@@ -11,7 +11,7 @@ module.exports = {
                     **After** \`\`\`${newMessage.content}\`\`\``
                 )
                 .setColor('YELLOW')
-                .setFooter('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
+                .setFooter('Message Delete', oldMessage.author.displayAvatarURL({ dynamic: true }))
         )
 	},
 };
