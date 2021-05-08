@@ -1,10 +1,11 @@
 module.exports = {
 	name: 'messageDelete',
 	execute(message, client) {
+        const Discord = require('discord.js')
         message.channel.send(
-            new MessageEmbed()
+            new Discord.MessageEmbed()
                 .setColour('RED')
-                .SetAuthor('Message Delete', executor.avatarURL())
+                .SetAuthor('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
                 .setDescription(
                     `**Author:** ${message.author.username}#${message.author.discriminator}
                     **Channel:** ${message.channel}
