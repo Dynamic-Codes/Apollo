@@ -1,9 +1,9 @@
 module.exports = {
 	name: 'messageUpdate',
-	async execute(oldMessage, newMessage) {
+	async execute(oldMessage, newMessage, client) {
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
-            guildID: message.guild.id
+            guildID: oldMessage.guild.id
         });
 
         let chx = guildProfile.auditLogID;
