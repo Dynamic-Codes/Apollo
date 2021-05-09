@@ -13,33 +13,31 @@ module.exports = {
         const GCoins = '<:GalacticCurrency:840312897187217468>'
         const GBars = '<:GalacticBars:840313364278280202>'
 
-        let mentionMember = message.member;
         const depMoney = args[0]
 
         if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
 
-        message.channel.send(`You said ${depMoney}`)
+        let balanceProfile = await Balance.findOne({ userID: message.author.id});
+        if (!balanceProfile) {
+            balanceProfile = await new Balance({
+                _id: mongoose.Types.ObjectId(),
+                userID: mentionMember.id,
+                lastEdited: Date.now(),
+            });
+            await balanceProfile.save().catch(err => console.log(err));
+        }
 
-        // let balanceProfile = await Balance.findOne({ userID: mentionMember.id});
-        // if (!balanceProfile) {
-        //     balanceProfile = await new Balance({
-        //         _id: mongoose.Types.ObjectId(),
-        //         userID: mentionMember.id,
-        //         lastEdited: Date.now(),
-        //     });
-        //     await balanceProfile.save().catch(err => console.log(err));
-        // }
+        if (depMoney > balanceProfile.balance) return message.channel.send(`꒰⚠꒱ ꒦ Where in the solar system did you get that much money?! ꒷`) // when u don't have enough money
+        if ((balanceProfile.bankLimit - balanceProfile.bank) > depMoney) return(`꒰ℹ꒱ ꒦ Halo's vault doesn't have that much storage! ꒷`) // When you don't have enough space
 
-        // await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + coinsToGive, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - depMoney, bank: balanceProfile.bank + depMoney , lastEdited: Date.now() });
 
-        // const BalEmbed = new Discord.MessageEmbed()
-        //     .setTitle(`${mentionMember.user.tag}'s Balance`)
-        //     .addField(`Space Credits`, `${GCoins}${balanceProfile.balance}`)
-        //     .addField(`Bank Balance`, `${GBars}${balanceProfile.bank} / \`${balanceProfile.bankLimit}\`` )
-        //     .setColor('#5234d9')
-        //     .setTimestamp()
-        //     .setFooter('ApolloProject', message.author.displayAvatarURL({ dynamic: true }))
+        const BalEmbed = new Discord.MessageEmbed()
+            .setTitle(`Deposited ${depMoney}!`)
+            .setColor('#5234d9')
+            .setTimestamp()
+            .setFooter('ApolloProject', message.author.displayAvatarURL({ dynamic: true }))
         
-        // message.channel.send(BalEmbed)
+        message.channel.send(BalEmbed)
     }
 };
