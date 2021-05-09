@@ -16,7 +16,7 @@ module.exports = {
         let mentionMember = message.member;
         const depMoney = args[0]
 
-        if (!depMoney == INTEGER) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
+        if (!depMoney === INTEGER) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
 
         message.channel.send(`You said ${depMoney}`)
 
