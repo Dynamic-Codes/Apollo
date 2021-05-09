@@ -7,6 +7,7 @@ module.exports = {
         const Balance = require('../../models/balanceSchema');
         const mongoose = require('mongoose');
         const Discord = require('discord.js');
+        const GCoins = '<:GalacticCurrency:840312897187217468>'
 
         const chance = Math.floor(Math.random() * 10) + 1;
         if(chance >= 1 && chance <= 5) {
@@ -23,7 +24,7 @@ module.exports = {
             ];
 
             const coinsToGive = Math.floor(Math.random() * 150) + 3; 
-            message.channel.send(`${array[Math.floor(Math.random() * 8)]} :coin: ${coinsToGive} credits `)
+            message.channel.send(`${array[Math.floor(Math.random() * 8)]} ${GCoins}${coinsToGive} credits `)
 
             let balanceProfile = await Balance.findOne({ userID: message.author.id});
             if (!balanceProfile) {
@@ -42,14 +43,15 @@ module.exports = {
                 'Mars only gives red Credits tho?',
                 'Looks like this satelight is orbiting way to fast..',
                 'HOLY MILKYWAY! Oh wait.. nvm- you found no one to beg to.',
+                'Pika gave you 25 fake credits, sliced them up in your face, and sliced you too. Might not wanna ask her again! 👀',
                 '#BegNation ran out of there daily stonks.',
                 'You begged Meteor and got slammed in the face! Try not to do it again XD',
                 'Wormholes are great but are unreliable!',
                 '#BegProject fundings got sucked into a blackhole..',
-                'Pika gave you 25 fake credits, sliced them up in your face, and sliced you too. Might not wanna ask her again! 👀'
+                'Pika gave you 25 fake credits, sliced them up in your face, and sliced you too. Might not wanna ask her again! 👀',
             ];
 
-            message.channel.send(array[Math.floor(Math.random() * 9)]);
+            message.channel.send(array[Math.floor(Math.random() * 10)]);
         }
     },
 };
