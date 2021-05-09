@@ -13,7 +13,7 @@ module.exports = {
 
         const withMoney = args[0]
 
-        if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
+        if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${withMoney}? ꒷`)
 
         let balanceProfile = await Balance.findOne({ userID: message.author.id});
         if (!balanceProfile) {
