@@ -27,8 +27,8 @@ module.exports = {
             await balanceProfile.save().catch(err => console.log(err));
         }
 
-        if (depMoney > balanceProfile.balance) return message.channel.send(`꒰⚠꒱ ꒦ Where in the solar system did you get that much money?! ꒷`) // when u don't have enough money
-        if ((balanceProfile.bankLimit - balanceProfile.bank) > depMoney) return message.channel.send(`꒰ℹ꒱ ꒦ Halo's vault doesn't have that much storage! ꒷`) // When you don't have enough space
+        if (depMoney > balanceProfile.balance) return message.channel.send(`꒰⚠꒱ ꒦ Where in the solar system did you get that much money?! ꒷`); // when u don't have enough money
+        if ((balanceProfile.bankLimit - balanceProfile.bank) < depMoney) return message.channel.send(`꒰ℹ꒱ ꒦ Halo's vault doesn't have that much storage! ꒷`); // When you don't have enough space
 
         await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - depMoney, bank: balanceProfile.bank + depMoney, lastEdited: Date.now() });
 
