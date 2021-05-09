@@ -3,7 +3,6 @@ module.exports = {
     description: 'Take your Bars from Halo\'s Vault to your wallet!',
     usage: '<amount>',
     guildOnly: true,
-    ownerOnly: true,
     aliases: ['with'],
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
