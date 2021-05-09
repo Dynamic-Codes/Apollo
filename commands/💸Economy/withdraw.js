@@ -1,6 +1,6 @@
 module.exports = {
     name: 'withdraw',
-    description: 'From Halo\'s vault to your wallet!',
+    description: 'Take your Bars from Halo\'s Vault to your wallet!',
     usage: '<amount>',
     guildOnly: true,
     aliases: ['with'],
@@ -11,9 +11,9 @@ module.exports = {
         const GCoins = '<:GalacticCurrency:840312897187217468>'
         const GBars = '<:GalacticBars:840313364278280202>'
 
-        const withMoney = args[0]
+        const depMoney = args[0]
 
-        if (isNaN(withMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${withMoney}? ꒷`)
+        if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
 
         let balanceProfile = await Balance.findOne({ userID: message.author.id});
         if (!balanceProfile) {
@@ -25,12 +25,12 @@ module.exports = {
             await balanceProfile.save().catch(err => console.log(err));
         }
 
-        if (balanceProfile.bank < withMoney) return message.channel.send(`꒰⚠꒱ ꒦ Mama Galactic! You don't have that much in your bank! ꒷`); // when u don't have enough money
+        if (depMoney > balanceProfile.bank) return message.channel.send(`꒰⚠꒱ ꒦ Mama Moons! You don't have that much in your bank! ꒷`); // when u don't have enough money in bank
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + withMoney, bank: balanceProfile.bank - withMoney, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + depMoney, bank: balanceProfile.bank - depMoney, lastEdited: Date.now() });
 
         const BalEmbed = new Discord.MessageEmbed()
-            .setTitle(`Withdrawed ${GBars}${withMoney} Galactic Bars!`)
+            .setTitle(`Withdrawed ${GBars}${depMoney} Galactic Bars!`)
             .setColor('#5234d9')
             .setTimestamp()
             .setFooter('ApolloProject', message.author.displayAvatarURL({ dynamic: true }))
