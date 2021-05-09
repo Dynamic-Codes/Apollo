@@ -3,6 +3,7 @@ module.exports = {
     description: 'Take your Bars from Halo\'s Vault to your wallet!',
     usage: '<amount>',
     guildOnly: true,
+    ownerOnly: true,
     aliases: ['with'],
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
@@ -14,6 +15,7 @@ module.exports = {
         const depMoney = args[0]
 
         if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
+        const takeMoney = Number(depMoney)
 
         let balanceProfile = await Balance.findOne({ userID: message.author.id});
         if (!balanceProfile) {
@@ -27,7 +29,7 @@ module.exports = {
 
         if (depMoney > balanceProfile.bank) return message.channel.send(`꒰⚠꒱ ꒦ Mama Moons! You don't have that much in your bank! ꒷`); // when u don't have enough money in bank
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + depMoney, bank: balanceProfile.bank - depMoney, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + takeMoney, bank: balanceProfile.bank - depMoney, lastEdited: Date.now() });
 
         const BalEmbed = new Discord.MessageEmbed()
             .setTitle(`Withdrawed ${GBars}${depMoney} Galactic Bars!`)
