@@ -20,7 +20,7 @@ module.exports = {
 
         const muteRole = message.guild.roles.cache.get(guildRole);
 
-        const mentionMember = message.guild.cache.get(args[0])
+        const mentionMember = message.mentions.members.first() || message.guild.cache.get(args[0])
         const member = message.guild.members.resolve(mentionMember);
         let time = args[1]
         let reason = args.slice(2).join(" ")
