@@ -21,7 +21,7 @@ module.exports = {
         if (!balanceProfile) {
             balanceProfile = await new Balance({
                 _id: mongoose.Types.ObjectId(),
-                userID: mentionMember.id,
+                userID: message.author.id,
                 lastEdited: Date.now(),
             });
             await balanceProfile.save().catch(err => console.log(err));
