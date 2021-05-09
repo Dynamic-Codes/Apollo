@@ -45,7 +45,8 @@ module.exports = {
                 '#BegNation ran out of there daily stonks.',
                 'You begged Meteor and got slammed in the face! Try not to do it again XD',
                 'Wormholes are great but are unreliable!',
-                '#BegProject fundings got sucked into a blackhole..'
+                '#BegProject fundings got sucked into a blackhole..',
+                'Pika gave you 25 fake credits, sliced them up in your face, and sliced you too. Might not wanna ask her again! 👀'
             ];
 
             message.channel.send(array[Math.floor(Math.random() * 8)]);
