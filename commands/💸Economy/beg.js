@@ -49,7 +49,7 @@ module.exports = {
                 'Pika gave you 25 fake credits, sliced them up in your face, and sliced you too. Might not wanna ask her again! 👀'
             ];
 
-            message.channel.send(array[Math.floor(Math.random() * 8)]);
+            message.channel.send(array[Math.floor(Math.random() * 9)]);
         }
     },
 };
