@@ -7,6 +7,7 @@ module.exports = {
     aliases: ['bank'],
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
+        const Guild = require('../../models/guildSchema')
         const mongoose = require('mongoose');
         const Discord = require('discord.js')
         const GCoins = '<:GalacticCurrency:840312897187217468>'
