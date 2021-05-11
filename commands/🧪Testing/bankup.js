@@ -36,13 +36,13 @@ module.exports = {
                 .setDescription(`Welcome to the Halo's Vault! Thanks for picking us as your bank ${message.author.username}.\n here you can upgrade your Vault's storage. Just choose a deal below!`)
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
-                    { name: '💰 Elea Upgrade', value: `Storage: ${GBars}\`1,000\`\nID: \`HV-ELEA`, inline: true },
-                    { name: '💵 Eophus Upgrade', value: `Storage: ${GBars}\`5,000\`\nID: \`HV-EPHS`, inline: true },
-                    { name: '💴 Tiatov Upgrade', value: `Storage: ${GBars}\`10,000\`\nID: \`HV-TITV`, inline: true },
-                    { name: '💶 Triton Upgrade', value: `Storage: ${GBars}\`50,000\`\nID: \`HV-TRTN`, inline: true },
-                    { name: '💷 Sedna Upgrade', value: `Storage: ${GBars}\`100,000\`\nID: \`HV-SDNA`, inline: true },
-                    { name: '💸 Haumea Upgrade', value: `Storage: ${GBars}\`500,000\`\nID: \`HV-HUMA`, inline: true },
-                    { name: '💳 Kepler Upgrade', value: `Storage: ${GBars}\`1,000,000\`\nID: \`HV-KPLR`, inline: true },
+                    { name: '💰 Elea Upgrade', value: `Storage: ${GBars}\`1,000\`\nID: \`HV-ELEA\``, inline: true },
+                    { name: '💵 Eophus Upgrade', value: `Storage: ${GBars}\`5,000\`\nID: \`HV-EPHS\``, inline: true },
+                    { name: '💴 Tiatov Upgrade', value: `Storage: ${GBars}\`10,000\`\nID: \`HV-TITV\``, inline: true },
+                    { name: '💶 Triton Upgrade', value: `Storage: ${GBars}\`50,000\`\nID: \`HV-TRTN\``, inline: true },
+                    { name: '💷 Sedna Upgrade', value: `Storage: ${GBars}\`100,000\`\nID: \`HV-SDNA\``, inline: true },
+                    { name: '💸 Haumea Upgrade', value: `Storage: ${GBars}\`500,000\`\nID: \`HV-HUMA\``, inline: true },
+                    { name: '💳 Kepler Upgrade', value: `Storage: ${GBars}\`1,000,000\`\nID: \`HV-KPLR\``, inline: true },
                 )
                 .setFooter('🚀 ApolloProject')
 
