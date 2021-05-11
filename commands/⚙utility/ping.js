@@ -16,8 +16,8 @@ module.exports = {
         PartyMoji = '<a:DinoBeeYay:790316795088076852>'
         AnBeeMoji = '<a:CuteBee:790337245924163615>'
 
-        vrsn = `${GearMoji} Beta 20.1.2 | Verified Release ${CheckMoji}`
-        vrsnBasic = `${GearMoji} Beta 20.1.2`
+        vrsn = `${GearMoji} Beta 21.5.0 | Verified Release ${CheckMoji}`
+        vrsnBasic = `${GearMoji} Beta 21.5.0`
 
         message.channel.bulkDelete(1)
 
