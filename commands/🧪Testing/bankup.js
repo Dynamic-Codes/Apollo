@@ -1,6 +1,6 @@
 module.exports = {
     name: 'bankup',
-    description: 'Upgrade Halo\'s Vault and store you Galactic riches!',
+    description: 'Upgrade Halo\'s Vault and store your Galactic riches!',
     usage: '<amount>',
     guildOnly: true,
     ownerOnly: true,
@@ -46,7 +46,7 @@ module.exports = {
                 )
                 .setFooter('🚀 ApolloProject')
 
-            await message.channel.send(bankType)
+            await message.channel.send(BankBed)
             message.channel.send(`Use \`${guildProfile.prefix}bankup <ID>\` to make purchase!`)
         }
 
