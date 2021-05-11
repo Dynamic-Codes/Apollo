@@ -45,7 +45,7 @@ module.exports = {
         let str = ''
         let emojis = [
             '🌍',
-            '🌑',
+            '🌙',
             '🪐',
             '⭐',
             '☀',
