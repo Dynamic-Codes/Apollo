@@ -42,7 +42,9 @@ module.exports = {
                     { name: '💶 Triton Upgrade', value: `Storage: ${GBars}\`50,000\`\nID: \`HV-TRTN\``, inline: true },
                     { name: '💷 Sedna Upgrade', value: `Storage: ${GBars}\`100,000\`\nID: \`HV-SDNA\``, inline: true },
                     { name: '💸 Haumea Upgrade', value: `Storage: ${GBars}\`500,000\`\nID: \`HV-HUMA\``, inline: true },
+                    { name: '\u200B', value: '\u200B', inline: true },
                     { name: '💳 Kepler Upgrade', value: `Storage: ${GBars}\`1,000,000\`\nID: \`HV-KPLR\``, inline: true },
+                    { name: '\u200B', value: '\u200B', inline: true },
                 )
                 .setFooter('🚀 ApolloProject')
 
