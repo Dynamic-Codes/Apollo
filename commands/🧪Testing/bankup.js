@@ -50,7 +50,7 @@ module.exports = {
             message.channel.send(`Use \`${guildProfile.prefix}bankup <ID>\` to make upragde!`)
         }
 
-        if (!"hv-ephs", "hv-titv", "hv-trtn", "hv-sdna", "hv-huma", "hv-kplr".includes(bankType).toLowerCase()) return message.channel.send('꒰🤔꒱ ꒦ Did you provide an invalid deal ID? ꒷')
+        if (!["hv-ephs", "hv-titv", "hv-trtn", "hv-sdna", "hv-huma", "hv-kplr"].includes(bankType).toLowerCase()) return message.channel.send('꒰🤔꒱ ꒦ Did you provide an invalid deal ID? ꒷')
         
         const delay = ms => new Promise(res => setTimeout(res, ms));
         LoadMoji = '<a:DinoBeeLoading:790303052913049630>'
