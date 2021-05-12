@@ -3,7 +3,6 @@ module.exports = {
     description: 'Upgrade Halo\'s Vault and store your Galactic riches!',
     usage: '<ID> / or just run command for help',
     guildOnly: true,
-    ownerOnly: true,
     aliases: ['bank'],
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
