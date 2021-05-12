@@ -83,32 +83,32 @@ module.exports = {
         if (bankType === 'hv-ephs') {
             //
             if (5000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 5000, bank: balanceProfile.bankLimit + 5000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 5000, bankLimit: balanceProfile.bankLimit + 5000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else if (bankType === 'hv-titv') {
             //
             if (10000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 10000, bank: balanceProfile.bankLimit + 10000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 10000, bankLimit: balanceProfile.bankLimit + 10000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else if (bankType === 'hv-trtn') {
             //
             if (50000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 50000, bank: balanceProfile.bankLimit + 50000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 50000, bankLimit: balanceProfile.bankLimit + 50000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else if (bankType === 'hv-sdna') {
             //
             if (100000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 100000, bank: balanceProfile.bankLimit + 100000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 100000, bankLimit: balanceProfile.bankLimit + 100000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else if (bankType === 'hv-huma') {
             //
             if (500000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 500000, bank: balanceProfile.bankLimit + 500000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 500000, bankLimit: balanceProfile.bankLimit + 500000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else if (bankType === 'hv-kplr') {
             //
             if (1000000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 1000000, bank: balanceProfile.bankLimit + 1000000, lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 1000000, bankLimit: balanceProfile.bankLimit + 1000000, lastEdited: Date.now() });
             BotMGS.edit(TranCheck)
         } else {
             return message.channel.send('꒰☢꒱ ꒦ A unknown Fatal error occured! ꒷')
