@@ -47,7 +47,7 @@ module.exports = {
                 .setFooter('🚀 ApolloProject')
 
             await message.channel.send(BankBed)
-            message.channel.send(`Use \`${guildProfile.prefix}bankup <ID>\` to make upragde!`)
+            return message.channel.send(`Use \`${guildProfile.prefix}bankup <ID>\` to make upragde!`)
         }
 
         if (!["hv-ephs", "hv-titv", "hv-trtn", "hv-sdna", "hv-huma", "hv-kplr"].includes(bankType).toLowerCase()) return message.channel.send('꒰🤔꒱ ꒦ Did you provide an invalid deal ID? ꒷')
