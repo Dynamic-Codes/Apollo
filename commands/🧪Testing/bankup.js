@@ -32,8 +32,9 @@ module.exports = {
 
         if (!bankType) {
             const BankBed = new Discord.MessageEmbed()
-                .setTitle('💸 Halo\s Vault Upgrades')
+                .setTitle('💸 Halo\'s Vault Upgrades')
                 .setDescription(`Welcome to the Halo's Vault! Thanks for picking us as your bank ${message.author.username}.\n here you can upgrade your Vault's storage. Just choose a deal below!`)
+                .setColor('PURPLE')
                 .addFields(
                     { name: '\u200B', value: '\u200B' },
                     { name: '💵 Eophus Upgrade', value: `Storage: ${GBars}\`5,000\`\nID: \`HV-EPHS\``, inline: true },
@@ -48,6 +49,72 @@ module.exports = {
             await message.channel.send(BankBed)
             message.channel.send(`Use \`${guildProfile.prefix}bankup <ID>\` to make upragde!`)
         }
+
+        if (!"hv-ephs", "hv-titv", "hv-trtn", "hv-sdna", "hv-huma", "hv-kplr".includes(bankType).toLowerCase()) return message.channel.send('꒰🤔꒱ ꒦ Did you provide an invalid deal ID? ꒷')
+        
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        LoadMoji = '<a:DinoBeeLoading:790303052913049630>'
+        CheckMoji = '<a:DinoBeeVerified:790307652663246889>'
+
+        const Transaction = new Discord.MessageEmbed()
+            .setTitle('Halo\'s Vault')
+            .setDescription(`${message.author.username}, we are now processing your transaction...\n${LoadMoji }This can take a few moments.`)
+            .setColor('ORANGE')
+            .setFooter('ApolloProject', message.author.displayAvatarURL({ dynamic: true }))
+        
+        const BotMGS = await message.channel.send(Transaction)
+
+        const TranCheck = new Discord.MessageEmbed()
+            .setTitle('Halo\'s Vault')
+            .setDescription(`${message.author.username}, we have approved your transaction!\n${CheckMoji} Your Vault limit has increased!`)
+            .addField('Vault Limit', `${GBars}\`${balanceProfile.bankLimit}\``)
+            .setColor('BLUE')
+            .setFooter('The Galactic Credits Bank', message.author.displayAvatarURL({ dynamic: true }))
+        
+        const TranDeny = new Discord.MessageEmbed()
+            .setTitle('Halo\'s Vault')
+            .setDescription(`${message.author.username}, you did not have enough Galact Credits!\n⛔ Your Vault limit has not been affected.`)
+            .addField('Vault Limit', `${GBars}\`${balanceProfile.bankLimit}\``)
+            .setColor('RED')
+            .setFooter('The Galactic Credits Bank', message.author.displayAvatarURL({ dynamic: true }))
+
+        await delay(3000); // waits 3 seconds
+
+        if (bankType === 'hv-ephs') {
+            //
+            if (5000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 5000, bank: balanceProfile.bankLimit = 5000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else if (bankType === 'hv-titv') {
+            //
+            if (10000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 10000, bank: balanceProfile.bankLimit = 10000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else if (bankType === 'hv-trtn') {
+            //
+            if (50000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 50000, bank: balanceProfile.bankLimit = 50000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else if (bankType === 'hv-sdna') {
+            //
+            if (100000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 100000, bank: balanceProfile.bankLimit = 100000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else if (bankType === 'hv-huma') {
+            //
+            if (500000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 500000, bank: balanceProfile.bankLimit = 500000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else if (bankType === 'hv-kplr') {
+            //
+            if (1000000 > balanceProfile.balance) return BotMGS.edit(TranDeny)
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 1000000, bank: balanceProfile.bankLimit = 1000000, lastEdited: Date.now() });
+            BotMGS.edit(TranCheck)
+        } else {
+            return message.channel.send('꒰☢꒱ ꒦ A unknown Fatal error occured! ꒷')
+        }
+
+
 
     },
 };
