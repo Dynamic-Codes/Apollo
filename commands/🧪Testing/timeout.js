@@ -8,7 +8,7 @@ module.exports = {
         const Balance = require('../../models/balanceSchema');
         const mongoose = require('mongoose');
         const Discord = require('discord.js')
-        const ms = require("parse-ms");
+        const ms = require("ms");
 
         let timeout = 86400000;
 
