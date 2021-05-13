@@ -28,7 +28,7 @@ module.exports = {
 
         if (depMoney > balanceProfile.bank) return message.channel.send(`꒰⚠꒱ ꒦ Mama Moons! You don't have that much in your bank! ꒷`); // when u don't have enough money in bank
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + takeMoney, bank: balanceProfile.bank - depMoney, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + takeMoney, bank: balanceProfile.bank - takeMoney, lastEdited: Date.now() });
 
         const BalEmbed = new Discord.MessageEmbed()
             .setTitle(`Withdrawed ${GBars}${depMoney} Galactic Bars!`)

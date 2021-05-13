@@ -12,6 +12,7 @@ module.exports = {
         const GBars = '<:GalacticBars:840313364278280202>'
 
         const depMoney = args[0]
+        const takeMoney = Number(depMoney)
 
         if (isNaN(depMoney)) return message.channel.send(`꒰ℹ꒱ ꒦ What type of amount is ${depMoney}? ꒷`)
 
@@ -28,7 +29,7 @@ module.exports = {
         if (depMoney > balanceProfile.balance) return message.channel.send(`꒰⚠꒱ ꒦ Where in the solar system did you get that much money?! ꒷`); // when u don't have enough money
         if ((balanceProfile.bankLimit - balanceProfile.bank) < depMoney) return message.channel.send(`꒰ℹ꒱ ꒦ Halo's vault doesn't have that much storage! ꒷`); // When you don't have enough space
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - depMoney, bank: balanceProfile.bank + depMoney, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - takeMoney, bank: balanceProfile.bank + takeMoney, lastEdited: Date.now() });
 
         const BalEmbed = new Discord.MessageEmbed()
             .setTitle(`Deposited ${GCoins}${depMoney} Galactic Credits!`)
