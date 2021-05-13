@@ -3,7 +3,7 @@ module.exports = {
     description: 'Get you on cooldown and restart bot and see if you still on cooldown',
     guildOnly: true,
     ownerOnly: true,
-    execute(message, args, client) {
+    async execute(message, args, client) {
         //Code here
         const Balance = require('../../models/balanceSchema');
         const mongoose = require('mongoose');
