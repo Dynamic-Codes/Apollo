@@ -32,6 +32,7 @@ module.exports = {
                 .addField('Try again in:', `${time.hours}h ${time.minutes}m ${time.seconds}s`)
                 .setTimestamp()
                 .setFooter(`ApolloProject | Owner Only 🚀`)
+            message.channel.send(timeEmbed)
         } else {
             await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = Date.now(), lastEdited: Date.now() });
             message.channel.send('\`APOLLOPROJECT\` | Utility Test Mode\n\nCommand started..')
