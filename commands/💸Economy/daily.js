@@ -31,7 +31,7 @@ module.exports = {
 
             const embed = new Discord.MessageEmbed()
                 .setTitle('✅| Already Claimed!')
-                .addField('Come back in', `${mili} Galactic Time!`)
+                .addField('Come back in', `\`${mili}\` Galactic Time!`)
                 .setColor('YELLOW')
 
             message.channel.send(embed)
