@@ -26,14 +26,13 @@ module.exports = {
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
-            let totalSeconds = ms(totalSecondsRAW)
+            let duration = ms(totalSecondsRAW)
             console.log(totalSeconds)
 
 
-            let hours = Math.floor(totalSeconds / 3600);
-            totalSeconds %= 3600;
-            let minutes = Math.floor(totalSeconds / 60);
-            let seconds = Math.floor(totalSeconds % 60);
+            const seconds = Math.floor((duration / 1000) % 60),
+            const minutes = Math.floor((duration / (1000 * 60)) % 60),
+            const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
             let uptime = `${hours}h ${minutes}m ${seconds}s`;
             console.log(`Uptime Val: ${uptime}`)
 
