@@ -39,10 +39,10 @@ module.exports = {
         ];
 
         const G = [
-            'Milkyway',
-            'Fireworks',
-            'Whirlpool',
-            'Tadpole',
+            'milkyway',
+            'fireworks',
+            'whirlpool',
+            'tadpole',
             'cosmos7',
             'andromeda',
             'dragonfly44',
