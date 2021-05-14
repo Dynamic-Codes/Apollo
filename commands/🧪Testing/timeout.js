@@ -24,7 +24,7 @@ module.exports = {
 
         let timeout =  120000; //86400000;
 
-        if (!Date.now() >= daily) {
+        if (Date.now() >= daily) {
             let TimeRemainRAW = ( daily - Date.now() )
             let mili = ms(TimeRemainRAW)
 
