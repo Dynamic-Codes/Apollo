@@ -1,7 +1,7 @@
 module.exports = {
     name: 'daily',
     description: 'Collect your daily Galactic Credits!',
-    cooldown: 86400,
+    cooldown: 5,
     guildOnly: true,
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
