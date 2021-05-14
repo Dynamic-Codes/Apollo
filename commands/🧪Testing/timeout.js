@@ -25,13 +25,18 @@ module.exports = {
         let daily = balanceProfile.dailyCool
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
-            let totalSeconds = ms(timeout - (Date.now() - daily));
+            let totalSecondsNaN = ms(timeout - (Date.now() - daily));
+            console.log(`Total Seconds: ${totalSecondsNaN}`)
+            let totalSeconds = Number(totalSecondsNaN)
+            console.log(`Convert Val: ${totalSeconds}`)
+
 
             let hours = Math.floor(totalSeconds / 3600);
             totalSeconds %= 3600;
             let minutes = Math.floor(totalSeconds / 60);
             let seconds = Math.floor(totalSeconds % 60);
             let uptime = `${hours}h ${minutes}m ${seconds}s`;
+            console.log(`Uptime Val: ${uptime}`)
 
             let timeEmbed = new Discord.MessageEmbed()
                 .setTitle(`ApolloUtility | Cooldown`)
