@@ -77,7 +77,6 @@ module.exports = {
         const chance = Math.floor(Math.random() * 10) + 1;
         if(chance >= 1 && chance <= 8) {
             const coinsToGive = Math.floor(Math.random() * 600) + 3; 
-            message.channel.send(`You searched ${choice} & found ${GCoins}${coinsToGive} credits `)
 
             let balanceProfile = await Balance.findOne({ userID: message.author.id});
             if (!balanceProfile) {
@@ -89,6 +88,7 @@ module.exports = {
                 await balanceProfile.save().catch(err => console.log(err));
             }
             await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + coinsToGive, lastEdited: Date.now() });
+            message.channel.send(`You searched ${choice} & found ${GCoins}${coinsToGive} credits! `)
         } else {
             const array = [
                 'Your tried your best but could not find it!',
