@@ -23,22 +23,21 @@ module.exports = {
         let daily = balanceProfile.dailyCool
 
         let timeout =  120000; //86400000;
-        let currentDate = Date.now()
 
-        if (!daily <= currentDate) {
-            let totalSecondsRAW = ms(timeout - (Date.now() - daily));
-            let timeRemain = ms(totalSecondsRAW)
-            console.log(`Uptime Val: ${timeRemain}`);
+        if (!Date.now() >= daily) {
+            let TimeRemainRAW = ( daily - Date.now() )
+            let mili = ms(TimeRemainRAW)
 
             let timeEmbed = new Discord.MessageEmbed()
                 .setTitle(`ApolloUtility | Cooldown`)
                 .setDescription('Testing cooldown data info remain while bot restarts..')
-                .addField('Try again in:', `${timeRemain}`)
+                .addField('Try again in:', `${mili}`)
                 .setTimestamp()
                 .setFooter(`ApolloProject | Owner Only 🚀`)
             message.channel.send(timeEmbed)
         } else {
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = (currentDate + timeout), lastEdited: Date.now() });
+            let CoolOver = ((Date.now() + timeout))
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = CoolOver, lastEdited: Date.now() });
             message.channel.send('\`APOLLOPROJECT\` | Utility Test Mode\n\nCommand started..')
         }
 
