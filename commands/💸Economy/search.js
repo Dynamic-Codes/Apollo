@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'beg',
-    description: 'Gain some free credits or get rejected by space and time',
+    name: 'search',
+    description: 'Explore the universe for free galactic credits!',
     cooldown: 60,
     guildOnly: true,
     async execute(message, args, client) {
