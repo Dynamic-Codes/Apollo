@@ -27,8 +27,6 @@ module.exports = {
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
             let duration = ms(totalSecondsRAW)
-            console.log(totalSeconds)
-
 
             const seconds = Math.floor((duration / 1000) % 60);
             const minutes = Math.floor((duration / (1000 * 60)) % 60);
