@@ -30,11 +30,11 @@ module.exports = {
             console.log(totalSeconds)
 
 
-            const seconds = Math.floor((duration / 1000) % 60),
-            const minutes = Math.floor((duration / (1000 * 60)) % 60),
+            const seconds = Math.floor((duration / 1000) % 60);
+            const minutes = Math.floor((duration / (1000 * 60)) % 60);
             const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
             let uptime = `${hours}h ${minutes}m ${seconds}s`;
-            console.log(`Uptime Val: ${uptime}`)
+            console.log(`Uptime Val: ${uptime}`);
 
             let timeEmbed = new Discord.MessageEmbed()
                 .setTitle(`ApolloUtility | Cooldown`)
