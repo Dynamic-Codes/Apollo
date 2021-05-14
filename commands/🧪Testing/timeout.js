@@ -25,10 +25,9 @@ module.exports = {
         let daily = balanceProfile.dailyCool
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
-            let totalSecondsNaN = ms(timeout - (Date.now() - daily));
-            console.log(`Total Seconds: ${totalSecondsNaN}`)
-            let totalSeconds = Number(totalSecondsNaN)
-            console.log(`Convert Val: ${totalSeconds}`)
+            let totalSecondsRAW = ms(timeout - (Date.now() - daily));
+            let totalSeconds = ms(totalSecondsRAW)
+            console.log(totalSeconds)
 
 
             let hours = Math.floor(totalSeconds / 3600);
