@@ -10,8 +10,6 @@ module.exports = {
         const Discord = require('discord.js')
         const ms = require("ms");
 
-        let timeout = 86400000;
-
         let balanceProfile = await Balance.findOne({ userID: message.author.id});
         if (!balanceProfile) {
             balanceProfile = await new Balance({
@@ -24,7 +22,10 @@ module.exports = {
 
         let daily = balanceProfile.dailyCool
 
-        if (daily !== null && timeout - (Date.now() - daily) > 0) {
+        let timeout =  120000; //86400000;
+        let currentDate = Date.now()
+
+        if (!daily <= currentDate) {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
             let timeRemain = ms(totalSecondsRAW)
             console.log(`Uptime Val: ${timeRemain}`);
@@ -37,7 +38,7 @@ module.exports = {
                 .setFooter(`ApolloProject | Owner Only 🚀`)
             message.channel.send(timeEmbed)
         } else {
-            await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = Date.now(), lastEdited: Date.now() });
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = (currentDate + timeout), lastEdited: Date.now() });
             message.channel.send('\`APOLLOPROJECT\` | Utility Test Mode\n\nCommand started..')
         }
 
