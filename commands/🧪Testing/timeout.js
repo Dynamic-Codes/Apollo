@@ -25,12 +25,18 @@ module.exports = {
         let daily = balanceProfile.dailyCool
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
-            let time = ms(timeout - (Date.now() - daily));
+            let totalSeconds = ms(timeout - (Date.now() - daily));
+
+            let hours = Math.floor(totalSeconds / 3600);
+            totalSeconds %= 3600;
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = Math.floor(totalSeconds % 60);
+            let uptime = `${hours}h ${minutes}m ${seconds}s`;
 
             let timeEmbed = new Discord.MessageEmbed()
                 .setTitle(`ApolloUtility | Cooldown`)
                 .setDescription('Testing cooldown data info remain while bot restarts..')
-                .addField('Try again in:', `${time.hours}h ${time.minutes}m ${time.seconds}s`)
+                .addField('Try again in:', `${uptime}`)
                 .setTimestamp()
                 .setFooter(`ApolloProject | Owner Only 🚀`)
             message.channel.send(timeEmbed)
