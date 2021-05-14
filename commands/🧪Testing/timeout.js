@@ -28,10 +28,13 @@ module.exports = {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
             let duration = ms(totalSecondsRAW)
 
-            const seconds = Math.floor((duration / 1000));
-            const minutes = Math.floor((duration / 60000));
-            const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-            let uptime = `${hours}h ${minutes}m ${seconds}s`;
+            var ms = s % 1000;
+            s = (s - ms) / 1000;
+            var secs = s % 60;
+            s = (s - secs) / 60;
+            var mins = s % 60;
+            var hrs = (s - mins) / 60;
+            let uptime = `${hrs}h ${mins}m ${secs}s`;
             console.log(`Uptime Val: ${uptime}`);
 
             let timeEmbed = new Discord.MessageEmbed()
