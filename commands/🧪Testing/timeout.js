@@ -26,7 +26,7 @@ module.exports = {
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
-            let duration = ms(totalSecondsRAW)
+            let s = ms(totalSecondsRAW)
 
             var mili = s % 1000;
             s = (s - mili) / 1000;
