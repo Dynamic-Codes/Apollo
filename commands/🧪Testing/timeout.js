@@ -26,21 +26,13 @@ module.exports = {
 
         if (daily !== null && timeout - (Date.now() - daily) > 0) {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
-            let s = ms(totalSecondsRAW)
-
-            var mili = s % 1000;
-            s = (s - mili) / 1000;
-            var secs = s % 60;
-            s = (s - secs) / 60;
-            var mins = s % 60;
-            var hrs = (s - mins) / 60;
-            let uptime = `${hrs}h ${mins}m ${secs}s`;
-            console.log(`Uptime Val: ${uptime}`);
+            let timeRemain = ms(totalSecondsRAW)
+            console.log(`Uptime Val: ${timeRemain}`);
 
             let timeEmbed = new Discord.MessageEmbed()
                 .setTitle(`ApolloUtility | Cooldown`)
                 .setDescription('Testing cooldown data info remain while bot restarts..')
-                .addField('Try again in:', `${uptime}`)
+                .addField('Try again in:', `${timeRemain}`)
                 .setTimestamp()
                 .setFooter(`ApolloProject | Owner Only 🚀`)
             message.channel.send(timeEmbed)
