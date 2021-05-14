@@ -1,3 +1,5 @@
+const { cooldown } = require('../⚙utility/ping');
+
 module.exports = {
     name: 'timeout',
     description: 'Get you on cooldown and restart bot and see if you still on cooldown',
@@ -24,7 +26,7 @@ module.exports = {
 
         let timeout =  120000; //86400000;
 
-        if (Date.now() >= daily) {
+        if ((Date.now()) < daily) {
             let TimeRemainRAW = ( daily - Date.now() )
             let mili = ms(TimeRemainRAW)
 
@@ -37,6 +39,7 @@ module.exports = {
             message.channel.send(timeEmbed)
         } else {
             let CoolOver = ((Date.now() + timeout))
+            console.log(CoolOver)
             await Balance.findOneAndUpdate({ userID: message.author.id}, { dailyCool: balanceProfile.dailyCool = CoolOver, lastEdited: Date.now() });
             message.channel.send('\`APOLLOPROJECT\` | Utility Test Mode\n\nCommand started..')
         }
