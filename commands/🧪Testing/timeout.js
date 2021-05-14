@@ -28,8 +28,8 @@ module.exports = {
             let totalSecondsRAW = ms(timeout - (Date.now() - daily));
             let duration = ms(totalSecondsRAW)
 
-            var ms = s % 1000;
-            s = (s - ms) / 1000;
+            var mili = s % 1000;
+            s = (s - mili) / 1000;
             var secs = s % 60;
             s = (s - secs) / 60;
             var mins = s % 60;
