@@ -37,7 +37,6 @@ module.exports = {
             message.channel.send(embed)
         } else {
             let CoolOver = ((Date.now() + timeout))
-            console.log(CoolOver)
             await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + 5000 ,dailyCool: balanceProfile.dailyCool = CoolOver, lastEdited: Date.now() });
             const embed = new Discord.MessageEmbed()
                 .setTitle('🎉| Daily Bonus Claimed')
