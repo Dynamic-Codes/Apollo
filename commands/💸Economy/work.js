@@ -2,7 +2,6 @@ module.exports = {
     name: 'work',
     description: 'Go to work, earn credits and be rich!',
     guildOnly: true,
-    ownerOnly: true,
     async execute(message, args, client) {
         const Balance = require('../../models/balanceSchema');
         const mongoose = require('mongoose');
