@@ -7,6 +7,7 @@ module.exports = {
     ownerOnly: true,
     cooldown: 5,
     async execute(message, args, client) {
+        const Discord = require('discord.js')
         const embed = new Discord.MessageEmbed()
             .setTitle('Some Title')
             .setColor('#0099ff');
