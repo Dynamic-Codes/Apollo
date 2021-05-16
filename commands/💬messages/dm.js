@@ -7,9 +7,11 @@ module.exports = {
 	execute(message) {
         mentiondm = message.mentions.users.first();
         message.channel.bulkDelete(1);
-        if(message.author.id !== '614829609665560687') return message.channel.send("Unable to use the command as this is Owner only.")
+        const UImsg = (`Official Message!`)
+        if(message.author.id !== '614829609665560687') UImsg = (`${message.author.username} | ${message.guild.name}\n`)
         if(mentiondm == null) return message.reply('Beep Boing: No user to send message to!');
-        mentionMessage = message.content.slice(6);
+        mentionMessage = args.slice(1).join(' ');
+        finalmsg = (`${UImsg} ${mentionMessage}`)
         mentiondm.send(mentionMessage);            
         console.log('Message Sent!')
     }
