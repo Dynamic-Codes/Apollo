@@ -4,7 +4,7 @@ module.exports = {
     args: true,
     usage: '<@user> <messaage>',
     guildOnly: true,
-	execute(message) {
+	execute(message, args) {
         mentiondm = message.mentions.users.first();
         message.channel.bulkDelete(1);
         const UImsg = (`Official Message!`)
