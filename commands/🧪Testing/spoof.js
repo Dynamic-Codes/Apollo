@@ -6,7 +6,7 @@ module.exports = {
     guildOnly: true,
     ownerOnly: true,
     cooldown: 5,
-    execute(message, args, client) {
+    async execute(message, args, client) {
         const embed = new Discord.MessageEmbed()
             .setTitle('Some Title')
             .setColor('#0099ff');
