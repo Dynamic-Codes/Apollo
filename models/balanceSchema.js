@@ -11,6 +11,7 @@ const balanceSchema = new mongoose.Schema({
     job: { type: String, default: 'not-set'},
     workStreak: { type: Number, default: 0},
     workCool: {type: Number, default: 0},
+    pfpDescrip: {type: String, default: 'User has not set there description.\nUse \`a!pf descrip <description>\` to set.'},
 })
 
 module.exports = mongoose.model("Balance", balanceSchema, 'balances')
