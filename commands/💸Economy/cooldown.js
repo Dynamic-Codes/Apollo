@@ -5,9 +5,6 @@ module.exports = {
         cooldown: 5,
         aliases: ['cd', 'cool', 'cools'],
         async execute(message, args, client) {
-                //Code here
-                const Discord = require('discordjs')
-
                 const Balance = require('../../models/balanceSchema');
                 const mongoose = require('mongoose');
                 const Discord = require('discord.js');
