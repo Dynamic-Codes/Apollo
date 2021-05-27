@@ -25,6 +25,7 @@ module.exports = {
 
                 const embed = new Discord.MessageEmbed()
                         .setTitle('⏱ Cooldowns')
+                        .setColor('ORANGE')
                         .setFooter('🚀 ApolloProject')
 
                 if ((Date.now()) < workTime) {
