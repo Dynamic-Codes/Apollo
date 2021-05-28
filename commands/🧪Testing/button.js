@@ -23,7 +23,7 @@ module.exports = {
                         .setID('cool')
 
                 const b3 = new MessageButton()
-                        .setStyle('grey')
+                        .setStyle('gray')
                         .setLabel('More?')
                         .setID('more')
 
