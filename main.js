@@ -19,6 +19,8 @@ const commandFolders = fs.readdirSync('./commands');
 
 const snipes = new Discord.Collection()
 
+require('discord-buttons')(client)
+
 client.on('messageDelete', message =>{
     snipes.set(message.channel.id, message)
 })
