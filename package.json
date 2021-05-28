@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "canvacord": "^5.2.0",
+    "discord-buttons": "^2.4.1",
     "discord-giveaways": "^4.4.3",
     "discord-mongo-currency": "^1.0.4",
     "discord-rpc": "^3.2.0",
