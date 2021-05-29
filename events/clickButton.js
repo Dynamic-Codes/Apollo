@@ -4,13 +4,11 @@ module.exports = {
         const Discord = require('discord.js')
         if (button.id === 'ping') {
             button.defer()
-            button.setDisabled()
             button.channel.send('Pong!');
         }
 
         if (button.id === 'cool') {
             button.defer()
-            button.setDisabled()
 
             const embed = new Discord.MessageEmbed()
                 .setTitle('Yes indeed!')
