@@ -22,13 +22,8 @@ module.exports = {
                         .setLabel('Cool?')
                         .setID('cool')
 
-                const b3 = new MessageButton()
-                        .setStyle('gray')
-                        .setLabel('More?')
-                        .setID('more')
-
                 message.channel.send('🚀 GALACTASTIC!', {
-                        buttons: [b1, b2, b3],
+                        buttons: [b1, b2],
                         embed: embed
                 })
 
