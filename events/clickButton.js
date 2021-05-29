@@ -22,7 +22,7 @@ module.exports = {
                 .setLabel('More?')
                 .setID('more')
 
-            button.message.edit(button: b3, embed: embed)
+            button.message.edit({button: b3, embed: embed})
 
         }
 	},
