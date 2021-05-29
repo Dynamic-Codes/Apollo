@@ -2,6 +2,8 @@ module.exports = {
 	name: 'clickButton',
 	async execute(button, client) {
         const Discord = require('discord.js')
+        const { MessageButton } = require('discord-buttons')
+        
         if (button.id === 'ping') {
             button.defer()
             button.channel.send('Pong!');
