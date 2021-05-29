@@ -8,7 +8,7 @@ module.exports = {
             button.channel.send('Pong!');
         }
 
-        if (button.id === 'cool' {
+        if (button.id === 'cool') {
             button.defer()
             button.setDisabled()
 
