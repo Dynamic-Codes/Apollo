@@ -25,5 +25,23 @@ module.exports = {
             button.message.edit({button: b3, embed: embed})
 
         }
+
+        if (button.id === 'ColorBtn') {
+            await button.think(true);
+
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            var HexColor = "#" + randomColor
+
+            const embed = new Discord.MessageEmbed()
+                    .setTitle(HexColor)
+                    .setColor(HexColor)
+
+            const ColorBtn = new MessageButton()
+                    .setStyle('blurple')
+                    .setLabel('More!')
+                    .setID('ColorBtn')
+
+            button.message.edit({button: ColorBtn, embed: embed})
+        }
 	},
 };
