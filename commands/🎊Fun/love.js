@@ -28,7 +28,7 @@ module.exports = {
             return message.reply(embed);
         }
 
-        if (person1 === ("cacti" || "caticii" || "dynamic") && person2 === ("cacti" || "caticii" || "dynamic")){
+        if (person1 === "cacti" && person2 === "dynamic"){
             const love = 100
             const loveIndex = Math.floor(love / 10);
             const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
