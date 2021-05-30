@@ -23,7 +23,7 @@ module.exports = {
                     `**User:** ${member.username}#${member.discriminator}`
                 )
                 .setColor('GREEN')
-                .setFooter('Member Join', member.displayAvatarURL({ dynamic: true }))
+                .setFooter('Member Join')
         )
 	},
 };
