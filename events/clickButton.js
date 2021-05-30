@@ -27,7 +27,7 @@ module.exports = {
         }
 
         if (button.id === 'ColorBtn') {
-            await button.think(true);
+            await button.defer();
 
             var randomColor = Math.floor(Math.random()*16777215).toString(16);
             var HexColor = "#" + randomColor
