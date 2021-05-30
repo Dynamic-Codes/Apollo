@@ -19,16 +19,7 @@ const commandFolders = fs.readdirSync('./commands');
 
 const snipes = new Discord.Collection()
 
-//test
-client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'logs');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(`Welcome to the server, ${member}`);
-});
-//test
+require('discord-buttons')(client)
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
