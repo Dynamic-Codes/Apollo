@@ -22,7 +22,7 @@ module.exports = {
                         .setID('ColorBtn')
 
                 message.channel.send({
-                        buttons: ColorBtn
+                        buttons: ColorBtn,
                         embed: embed
                 })
 
