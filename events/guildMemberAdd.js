@@ -20,7 +20,7 @@ module.exports = {
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
                 .setDescription(
-                    `**User:** ${member.username}#${member.discriminator}`
+                    `**User:** ${member}`
                 )
                 .setColor('GREEN')
                 .setFooter('Member Join')
