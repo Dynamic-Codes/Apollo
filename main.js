@@ -224,4 +224,11 @@ client.on('ready', () => {
     console.log(`Launching into space on ${client.user.username} rocket!`)
 })
 
+// test
+
+client.on('guildMemberAdd', guildMember =>{
+    console.log(`${guildMember.username} has joined ${guildMember.guild.name}`)
+});
+
+
 client.login(process.env.token);
