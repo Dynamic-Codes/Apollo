@@ -16,13 +16,13 @@ module.exports = {
                         .setTitle(HexColor)
                         .setColor(HexColor)
 
-                const ColorBtn = new MessageButton()
+                const b1 = new MessageButton()
                         .setStyle('blurple')
                         .setLabel('More!')
                         .setID('ColorBtn')
 
                 message.channel.send({
-                        buttons: ColorBtn,
+                        buttons: [b1],
                         embed: embed
                 })
 
