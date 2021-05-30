@@ -35,17 +35,18 @@ module.exports = {
         if (!args.length) {
             let SettingEmbed = new Discord.MessageEmbed()
             .setTitle(`${message.guild.name}'s Settings:`)
-            .setDescription(`If you are seeing no fields below, that means you have not done the setup yet!\nProperties: suggestionChannel, muteRoleID, auditLogID`)
+            .setDescription(`If you are seeing no fields below, that means you have not done the setup yet!\nProperties: suggestionChannel, muteRoleID, auditLogID, joinRoleID`)
             .setColor("BLUE")
         
             if (guildProfile.prefix) SettingEmbed.addField(`Server Prefix`, guildProfile.prefix);
             if (guildProfile.suggestionChannel) SettingEmbed.addField(`Suggestion Channel`, guildProfile.suggestionChannel);
             if (guildProfile.muteRoleID) SettingEmbed.addField(`Mute Role`, guildProfile.muteRoleID);
             if (guildProfile.auditLogID) SettingEmbed.addField(`Audit Log`, guildProfile.auditLogID);
+            if (guildProfile.joinRoleID) SettingEmbed.addField(`Audit Log`, guildProfile.joinRoleID);
 
             message.channel.send(SettingEmbed)
         } else {
-            if (!["prefix", "suggestionChannel", "muteRoleID", "auditLogID"].includes(args[0])) return message.channel.send('꒰⚠꒱ ꒦ You need to state a valid property to update. ꒷')
+            if (!["prefix", "suggestionChannel", "muteRoleID", "auditLogID", "joinRoleID"].includes(args[0])) return message.channel.send('꒰⚠꒱ ꒦ You need to state a valid property to update. ꒷')
             if (!args[1]) return message.channel.send('꒰⚠꒱ ꒦ You need to state the updated value. ꒷')
 
             if ("prefix" === args[0]) {
@@ -59,6 +60,9 @@ module.exports = {
                 message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
             } else if ("auditLogID" === args[0]) {
                 await Guild.findOneAndUpdate({ guildID: message.guild.id }, { auditLogID: args[1], lastEdited: Date.now() })
+                message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
+            } else if ("joinRoleID" === args[0]) {
+                await Guild.findOneAndUpdate({ guildID: message.guild.id }, { joinRoleID: args[1], lastEdited: Date.now() })
                 message.channel.send(`꒰✅꒱ ꒦ Updated: ${args[0]} ⇢ ${args[1]} ꒷`)
             }
         }
