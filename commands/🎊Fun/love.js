@@ -39,6 +39,41 @@ module.exports = {
             return message.reply(embed);
         }
 
+        if (person1 === "caticii" && person2 === "dynamic"){
+            const love = 100
+            const loveIndex = Math.floor(love / 10);
+            const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
+            const embed = new Discord.MessageEmbed()
+            .setColor("#ffb6c1")
+            .addField(`☁ **${person1}** loves **${person2}** this much:`, `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
+
+            return message.reply(embed);
+        }
+
+
+        if (person1 === "dynamic" && person2 === "cacti"){
+            const love = 100
+            const loveIndex = Math.floor(love / 10);
+            const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
+            const embed = new Discord.MessageEmbed()
+            .setColor("#ffb6c1")
+            .addField(`☁ **${person1}** loves **${person2}** this much:`, `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
+
+            return message.reply(embed);
+        }
+
+
+        if (person1 === "dynamic" && person2 === "caticii"){
+            const love = 100
+            const loveIndex = Math.floor(love / 10);
+            const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
+            const embed = new Discord.MessageEmbed()
+            .setColor("#ffb6c1")
+            .addField(`☁ **${person1}** loves **${person2}** this much:`, `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
+
+            return message.reply(embed);
+        }
+
         const embed = new Discord.MessageEmbed()
         .setColor("#ffb6c1")
         .addField(`☁ **${person1}** loves **${person2}** this much:`, `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
