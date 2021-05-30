@@ -47,15 +47,6 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'logs');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(`Welcome to the server, ${member}`);
-});
-
 const Blacklist = require('./models/blackListSchema')
 const Guild = require('./models/guildSchema')
 const Balance = require('./models/balanceSchema')
