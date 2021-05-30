@@ -3,7 +3,7 @@ module.exports = {
 	async execute(member, client) {
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
-            guildID: message.guild.id
+            guildID: member.guild.id
         });
 
         let chx = guildProfile.auditLogID;
@@ -12,18 +12,18 @@ module.exports = {
 
         if(!guildProfile.auditLogID) return;
 
-        let welcomeRole = guildMember.guild.roles.cache.get(role);
+        let welcomeRole = member.guild.roles.cache.get(role);
  
-        guildMember.roles.add(welcomeRole);
+        member.roles.add(welcomeRole);
 
         const Discord = require('discord.js')
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
                 .setDescription(
-                    `**User:** ${guildMember.username}#${guildMember.discriminator}`
+                    `**User:** ${member.username}#${member.discriminator}`
                 )
                 .setColor('GREEN')
-                .setFooter('Member Join', guildMember.displayAvatarURL({ dynamic: true }))
+                .setFooter('Member Join', member.displayAvatarURL({ dynamic: true }))
         )
 	},
 };
