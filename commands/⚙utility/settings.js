@@ -35,7 +35,7 @@ module.exports = {
         if (!args.length) {
             let SettingEmbed = new Discord.MessageEmbed()
             .setTitle(`${message.guild.name}'s Settings:`)
-            .setDescription(`If you are seeing no fields below, that means you have not done the setup yet!\nProperties: suggestionChannel, muteRoleID`)
+            .setDescription(`If you are seeing no fields below, that means you have not done the setup yet!\nProperties: suggestionChannel, muteRoleID, auditLogID`)
             .setColor("BLUE")
         
             if (guildProfile.prefix) SettingEmbed.addField(`Server Prefix`, guildProfile.prefix);

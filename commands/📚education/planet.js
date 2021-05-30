@@ -7,7 +7,8 @@ module.exports = {
     ownerOnly: false,
     execute(message, args) {
         const Discord = require('discord.js');
-        const Typeinfo = ((args[0]).toLowerCase());
+        const ArgRaw = args[0]
+        const Typeinfo = (ArgRaw.toLowerCase());
 
         if (!["jupiter"].includes(args[0])) return message.channel.send('꒰⚠꒱ ꒦ Our database is fresh outa a white hole, as of now we only support `Jupiter`! ꒷')
 
