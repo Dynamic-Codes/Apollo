@@ -2,7 +2,6 @@ module.exports = {
         name: 'colour',
         description: 'Get a random colour with Hex code!',
         guildOnly: true,
-        ownerOnly: true,
         cooldown: 5,
         aliases: ['color'],
         async execute(message, args, client) {
