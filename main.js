@@ -19,8 +19,6 @@ const commandFolders = fs.readdirSync('./commands');
 
 const snipes = new Discord.Collection()
 
-require('discord-buttons')(client)
-
 //test
 client.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
