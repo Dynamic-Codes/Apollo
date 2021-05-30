@@ -9,7 +9,7 @@ module.exports = {
             if (choices1.includes(arg.toLowerCase())) {
                 let number = Math.floor(Math.random() * 3);
                 if (number == 1) {
-                    return message.channel.send('It was a tie, we both had ' + (args[1]).toLowerCase())
+                    return message.channel.send('It was a tie, we both had ' + (args[1]))
                 }
                 if (number == 2) {
                     if (arg.toLowerCase() == "rock") {
