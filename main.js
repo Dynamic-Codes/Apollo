@@ -21,34 +21,6 @@ const snipes = new Discord.Collection()
 
 require('discord-buttons')(client)
 
-client.on('messageDelete', message =>{
-    snipes.set(message.channel.id, message)
-})
-
-// test
-
-client.on('guildMemberAdd', guildMember =>{
-    console.log(`${guildMember.username} has joined ${guildMember.guild.name} the first one`)
-});
-
-// test
-
-client.on('guildMemberAdd', guildMember =>{
-    console.log(`works 2`)
-});
-
-// test
-
-client.on('guildMemberAdd', member =>{
-    console.log(`${guildMember.username} has joined ${guildMember.guild.name} third one`)
-});
-
-// test
-
-client.on('guildMemberAdd', member =>{
-    console.log(`works 4`)
-});
-
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {

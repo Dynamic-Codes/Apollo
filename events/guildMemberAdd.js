@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'guildMemberAdd',
-	async execute(guildMember, client) {
+	async execute(member, client) {
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
             guildID: message.guild.id
