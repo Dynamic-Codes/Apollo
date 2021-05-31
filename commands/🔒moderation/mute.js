@@ -15,6 +15,19 @@ module.exports = {
             guildID: message.guild.id
         });
 
+        if(!message.member.permissions.has("MANAGE_MESSAGES")){
+			const PermErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('Missing Permission!')
+			.setDescription('Seems like you don\'t have the correct permission to use this command! Yikes..')
+			.addFields(
+				{name: '__User:__' , value: `\`${message.author.username}\``, inline: true},
+				{name: '__Permission:__' , value: '`MANAGE MESSAGES`',inline: true},
+			)
+			.setColor(5158332)
+			.setFooter('Fact: There is a galaxy called Fireworks in our universe!')
+			return message.reply(PermErrorEmbed)
+        }
+
         const guildRole = guildProfile.muteRoleID
         if (!guildRole) return message.channel.send(`꒰⚠꒱ ꒦ Please set up a mute role! use \`${guildProfile.prefix}settings muteRoleID <role-ID>\` ꒷`)
 

@@ -17,6 +17,17 @@ module.exports = {
         const loveIndex = Math.floor(love / 10);
         const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
 
+        if (person1 === person2 ) {
+            const love = 100
+            const loveIndex = Math.floor(love / 10);
+            const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex);
+            const embed = new Discord.MessageEmbed()
+            .setColor("#ffb6c1")
+            .addField(`☁ **Always** love your self! `, `💟 ${Math.floor(love)}%\n\n${loveLevel}`);
+
+            return message.reply(embed);
+        }
+
         if (person1 === "dynamic" && person2 === "honey"){
             const love = 100
             const loveIndex = Math.floor(love / 10);

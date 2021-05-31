@@ -42,7 +42,7 @@ module.exports = {
             if (guildProfile.suggestionChannel) SettingEmbed.addField(`Suggestion Channel`, guildProfile.suggestionChannel);
             if (guildProfile.muteRoleID) SettingEmbed.addField(`Mute Role`, guildProfile.muteRoleID);
             if (guildProfile.auditLogID) SettingEmbed.addField(`Audit Log`, guildProfile.auditLogID);
-            if (guildProfile.joinRoleID) SettingEmbed.addField(`Audit Log`, guildProfile.joinRoleID);
+            if (guildProfile.joinRoleID) SettingEmbed.addField(`Join Role`, guildProfile.joinRoleID);
 
             message.channel.send(SettingEmbed)
         } else {
