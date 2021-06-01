@@ -13,12 +13,11 @@ module.exports = {
         const Discord = require('discord.js')
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
-                .setDescription(
-                    `**Author:** ${oldMessage.author.username}#${oldMessage.author.discriminator}
-                    **Channel:** ${oldMessage.channel}
-                    **Before:** \`\`\`${oldMessage.content}\`\`\`
-                    **After** \`\`\`${newMessage.content}\`\`\``
-                )
+                .setTitle(`${oldMessage.author.username}`)
+                .setDescription('📝 | Messaged Updated.')
+                .addField('__Channel__', `${oldMessage.channel}`)
+                .addField('__Before__', `${oldMessage.content}`)
+                .addField('__After__', `${newMessage.content}`)
                 .setColor('YELLOW')
                 .setFooter('Message Edited', oldMessage.author.displayAvatarURL({ dynamic: true }))
         )

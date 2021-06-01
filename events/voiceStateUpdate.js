@@ -12,17 +12,17 @@ module.exports = {
 
         const Discord = require('discord.js')
 
-        let user = client.user.cache.get(newState.id)
-        let oldVoice = client.channels.cache.get(oldState.channel.id)
-        let newVoice = client.channels.cache.get(newState.channel.id)
+        let user = client.users.cache.get(newState.id)
+        let oldVoice = client.channels.cache.get(oldState.channelID)
+        let newVoice = client.channels.cache.get(newState.channelID)
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(`${client.user.username}`)
+        .setTitle(`${user.username}`)
         .setColor('BLUE')
-        .setFooter('Voice Activity', client.author.displayAvatarURL({ dynamic: true }))
+        .setFooter('Voice Activity', user.displayAvatarURL({ dynamic: true }))
 
-        if (newVoice) return embed.setDescription(`📥 | Has joined ${newVoice.name}`)
-        if (oldVoice && !newVoice) return embed.setDescription(`📤 | Has left ${oldVoice.name}`)
+        if (newVoice) embed.setDescription(`📥 | Has joined \`${newVoice.name}\``)
+        if (oldVoice && !newVoice) embed.setDescription(`📤 | Has left \`${oldVoice.name}\``)
 
         client.channels.cache.get(chx).send(embed)
 	},

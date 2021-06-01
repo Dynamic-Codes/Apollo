@@ -13,17 +13,18 @@ module.exports = {
         if(!guildProfile.auditLogID) return;
 
         let welcomeRole = member.guild.roles.cache.get(role);
+
+        let user1 = client.users.cache.get(member.id)
  
         member.roles.add(welcomeRole);
 
         const Discord = require('discord.js')
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
-                .setDescription(
-                    `**User:** ${member}`
-                )
+                .setTitle(`${user1.username}`)
+                .setDescription(`🎊 | Has joined the server`)
                 .setColor('GREEN')
-                .setFooter('Member Join')
+                .setFooter('Member Join', user1.displayAvatarURL({ dynamic: true }))
         )
 	},
 };

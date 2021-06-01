@@ -13,11 +13,10 @@ module.exports = {
         const Discord = require('discord.js')
         client.channels.cache.get(chx).send(
             new Discord.MessageEmbed()
-                .setDescription(
-                    `**Author:** ${message.author.username}#${message.author.discriminator}
-                    **Channel:** ${message.channel}
-                    **Content:** \`\`\`${message.content}\`\`\``
-                )
+                .setTitle(`${message.author.username}`)
+                .setDescription('🗑 | Messaged deleted.')
+                .addField('__Channel__', `${message.channel}`)
+                .addField('__Content__', `${message.content}`)
                 .setColor('RED')
                 .setFooter('Message Delete', message.author.displayAvatarURL({ dynamic: true }))
         )
