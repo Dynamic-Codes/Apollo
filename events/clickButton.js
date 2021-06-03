@@ -57,7 +57,7 @@ module.exports = {
                         .setDescription(`${ticketProfile.TickChannelMSG}`)
                         .setColor('#834ede')
                         .setTimestamp()
-                        .setFooter('ApolloTickets opened at)
+                        .setFooter('ApolloTickets opened at')
                         const reactionMessage = await channel.send(TicketEmbed);
 
                         try {
