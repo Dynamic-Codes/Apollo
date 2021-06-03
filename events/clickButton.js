@@ -57,7 +57,7 @@ module.exports = {
                         .setDescription(`${ticketProfile.TickChannelMSG}`)
                         .setColor('#834ede')
                         .setTimestamp()
-                        .setFooter('ApolloTickets | ', button.clicker.user.displayAvatarURL({ dynamic: true }))
+                        .setFooter('ApolloTickets opened at)
                         const reactionMessage = await channel.send(TicketEmbed);
 
                         try {
