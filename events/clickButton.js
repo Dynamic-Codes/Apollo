@@ -42,7 +42,7 @@ module.exports = {
                                 SEND_MESSAGE: false,
                                 VIEW_CHANNEL: false,
                         });
-                        channel.updateOverwrite((button.clicker.member), {
+                        channel.updateOverwrite((button.clicker.user), {
                                 SEND_MESSAGE: true,
                                 VIEW_CHANNEL: true,
                         });
@@ -76,6 +76,11 @@ module.exports = {
                         channel.updateOverwrite(button.guild.id, {
                                 SEND_MESSAGE: false,
                                 VIEW_CHANNEL: false,
+                        });
+
+                        channel.updateOverwrite((button.clicker.user), {
+                                SEND_MESSAGE: true,
+                                VIEW_CHANNEL: true,
                         });
 
                         collector.on("collect", (reaction, user) => {
