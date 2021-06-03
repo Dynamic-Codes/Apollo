@@ -73,6 +73,11 @@ module.exports = {
                                 { dispose: true }
                         );
 
+                        channel.updateOverwrite(button.guild.id, {
+                                SEND_MESSAGE: false,
+                                VIEW_CHANNEL: false,
+                        });
+
                         collector.on("collect", (reaction, user) => {
                                 switch (reaction.emoji.name) {
                                         case "🔒":
