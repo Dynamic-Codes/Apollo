@@ -57,7 +57,7 @@ module.exports = {
             .setDescription('To setup tickets in your server you will need to do a few things first.')
             .addField('Step 1', 'Make a new category where all your tickets will be stored. You can name this anything you like.')
             .addField('Step 2', 'Setup your server config by running `a!ticket setup <params> <input>` you can see more detailed info below.')
-            .addField('Setup Parameters', '`section`: The category ID\n`staff`: The ticket Staff role ID\n`title`: The title of your start ticket embed\n`description`: The descrip of the start ticket embed\n`message`: The message when a ticket is opned.')
+            .addField('Setup Parameters', '`section`: The category ID\n`staff`: The ticket Staff role ID\n`title`: The title of your start ticket embed\n`description`: The descrip of the start ticket embed\n`message`: The message when a ticket is opened.')
             .addField('Step 3', 'Run the `a!ticket` command again and make sure there are no errors.')
             .addField('Step 4', 'Once done finally run `a!ticket start` to enable tickets! 🥳')
             .setColor('ORANGE')
