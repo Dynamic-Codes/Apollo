@@ -1,4 +1,4 @@
-const { owner, mongodb_srv, token} = require('./config.json');
+const { owner, mongodb_srv } = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
@@ -231,4 +231,4 @@ client.on('ready', () => {
 })
 
 
-client.login(token);
+client.login(process.env.token);
