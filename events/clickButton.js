@@ -2,7 +2,9 @@ module.exports = {
 	name: 'clickButton',
 	async execute(button, message, args, client) {
                 const Discord = require('discord.js')
+                const { MessageAttachment } = require('discord.js')
                 const { MessageButton } = require('discord-buttons')
+                const fs = require('fs')
 
                 if (button.id === 'ColorBtn') {
                 await button.defer();
@@ -30,9 +32,24 @@ module.exports = {
                         guildID: button.guild.id
                         });
 
+                        const Transcript = require('../models/transcriptSchema')
+
                         let chx = ticketProfile.ParentSection;
 
                         await button.defer();
+
+                        const ch = button.guild.channels.cache.find(ch => ch.name === `ticket-${button.clicker.user.username}`)
+                        console.log(ch)
+                        if(ch) {
+                                button.channel
+                                .send(`We will be right with you! ${channel}`)
+                                .then((msg) => {
+                                        setTimeout(() => msg.delete(), 7000);
+                                })
+                                .catch((err) => {
+                                        throw err;
+                                });
+                        }
 
                         const channel = await button.guild.channels.create(`ticket: ${button.clicker.user.username}`);
     
@@ -57,12 +74,13 @@ module.exports = {
                         .setDescription(`${ticketProfile.TickChannelMSG}`)
                         .setColor('#834ede')
                         .setTimestamp()
-                        .setFooter('ApolloTickets opened at')
+                        .setFooter('Remember to save transcript before deleting ticket!')
                         const reactionMessage = await channel.send(TicketEmbed);
 
                         try {
                                 await reactionMessage.react("🔒");
                                 await reactionMessage.react("⛔");
+                                await reactionMessage.react("📝");
                         } catch (err) {
                                 channel.send("Error sending emojis!");
                                 throw err;
@@ -93,7 +111,18 @@ module.exports = {
                                                 .setDescription('⛔ | This ticket will be closed and deleted!')
                                                 .setColor('RED')
                                                 channel.send(embed)
+                                                Transcript.findOneAndDelete({ Channel : channel.id })
                                                 setTimeout(() => channel.delete(), 5000);
+                                                break;
+                                        case "📝":
+                                                Transcript.findOne({ Channel : channel.id }, async(err, data) => {
+                                                        if(err) throw err;
+                                                        if(data) {
+                                                                fs.writeFileSync(`../${channel.id}.txt`, data.Content.join("\n\n"))
+                                                                await channel.send(new MessageAttachment(fs.createReadStream(`../${channel.id}.txt`)));
+                                                                Transcript.findOneAndDelete({ Channel : channel.id })
+                                                        }
+                                                }) 
                                                 break;
                                 }
                         });

@@ -1,4 +1,4 @@
-const { owner, mongodb_srv} = require('./config.json');
+const { owner, mongodb_srv, token} = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
@@ -15,6 +15,15 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.cooldowns = new Discord.Collection();
 
+const distube = require('distube')
+const player = new distube(client);
+
+player.on('playSong', (message, queue, song) => {
+    message.channel.send(`${song.name} has started playing!`)
+});
+
+client.player = player;
+
 const commandFolders = fs.readdirSync('./commands');
 
 const snipes = new Discord.Collection()
@@ -22,6 +31,8 @@ const snipes = new Discord.Collection()
 require('discord-buttons')(client)
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
@@ -197,7 +208,6 @@ client.on('message', async message => {
     }
 })
 
-
 const activities_list = [
     "votes in space!", 
     "rover simulator.",
@@ -221,4 +231,4 @@ client.on('ready', () => {
 })
 
 
-client.login(process.env.token);
+client.login(token);
