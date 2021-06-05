@@ -123,6 +123,12 @@ module.exports = {
                                                                 // await channel.send(new MessageAttachment(fs.createReadStream(`../${channel.id}.txt`)));
                                                                 // Transcript.findOneAndDelete({ Channel : channel.id })
 
+                                                                const embed = new Discord.MessageEmbed()
+                                                                        .setTitle('📝 Saving, Formatting and getting transcript link..')
+                                                                        .setColor('ORANGE')
+
+                                                                const msgTrans = await channel.send(embed)
+
                                                                 const content = (data.Content.join("\n\n"))
 
                                                                 const url = await sourcebin.create("ApolloTranscript", content, {
@@ -130,7 +136,7 @@ module.exports = {
                                                                         description: `This is the transcript for the channel ${channel.name} with the ID ${channel.id}`,
                                                                 });
 
-                                                                channel.send(`${url}`)
+                                                                msgTrans.edit(`${url}`)
                                                         };
                                                 })
                                                 break;
