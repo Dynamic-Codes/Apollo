@@ -5,7 +5,7 @@ module.exports = {
                 const { MessageAttachment } = require('discord.js')
                 const { MessageButton } = require('discord-buttons')
                 const fs = require('fs')
-                const { create } = require('sourcebin')
+                const sourcebin = require("sourcebin-lite");
 
                 if (button.id === 'ColorBtn') {
                 await button.defer();
@@ -125,21 +125,12 @@ module.exports = {
 
                                                                 const content = (data.Content.join("\n\n"))
 
-                                                                create(
-                                                                        [
-                                                                                {
-                                                                                        name: `Transcript - ${channel.name}`,
-                                                                                        content,
-                                                                                        language: 'text',
-                                                                                },
-                                                                        ],
-                                                                        {
-                                                                                title: 'ApolloBot Transcript',
-                                                                                description: `This is the transcript for the following channel ${channel.name} with the id ${channel.id}.`
-                                                                        }
-                                                                ).then((value) => {
-                                                                        channel.send(`You can find the transcript here:\n${value.url}`)
-                                                                })
+                                                                const url = await sourcebin.create("ApolloTranscript", content, {
+                                                                        title: "Transcript",
+                                                                        description: `This is the transcript for the channel ${channel.name} with the ID ${channel.id}`,
+                                                                });
+
+                                                                channel.send(`${url}`)
                                                         };
                                                 })
                                                 break;

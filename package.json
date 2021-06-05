@@ -29,7 +29,7 @@
     "parse-ms": "^3.0.0",
     "quick.db": "^7.1.3",
     "sequelize": "^6.6.2",
-    "sourcebin": "^4.2.3",
+    "sourcebin-lite": "^0.0.4",
     "sqlite3": "^5.0.2"
   }
 }
