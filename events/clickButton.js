@@ -119,9 +119,9 @@ module.exports = {
                                                 Transcript.findOne({ Channel : channel.id }, async(err, data) => {
                                                         if(err) throw err;
                                                         if(data) {
-                                                                fs.writeFileSync(`../${channel.id}.txt`, data.Content.join("\n\n"))
-                                                                await channel.send(new MessageAttachment(fs.createReadStream(`../${channel.id}.txt`)));
-                                                                Transcript.findOneAndDelete({ Channel : channel.id })
+                                                                // fs.writeFileSync(`../${channel.id}.txt`, data.Content.join("\n\n"))
+                                                                // await channel.send(new MessageAttachment(fs.createReadStream(`../${channel.id}.txt`)));
+                                                                // Transcript.findOneAndDelete({ Channel : channel.id })
 
                                                                 const content = (data.Content.join("\n\n"))
 
