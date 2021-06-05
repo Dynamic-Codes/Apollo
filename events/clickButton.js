@@ -5,6 +5,7 @@ module.exports = {
                 const { MessageAttachment } = require('discord.js')
                 const { MessageButton } = require('discord-buttons')
                 const fs = require('fs')
+                const { create } = require('sourcebin')
 
                 if (button.id === 'ColorBtn') {
                 await button.defer();
@@ -121,8 +122,26 @@ module.exports = {
                                                                 fs.writeFileSync(`../${channel.id}.txt`, data.Content.join("\n\n"))
                                                                 await channel.send(new MessageAttachment(fs.createReadStream(`../${channel.id}.txt`)));
                                                                 Transcript.findOneAndDelete({ Channel : channel.id })
-                                                        }
-                                                }) 
+
+                                                                const content = (data.Content.join("\n\n"))
+
+                                                                create(
+                                                                        [
+                                                                                {
+                                                                                        name: `Transcript - ${channel.name}`,
+                                                                                        content,
+                                                                                        language: 'text',
+                                                                                },
+                                                                        ],
+                                                                        {
+                                                                                title: 'ApolloBot Transcript',
+                                                                                description: `This is the transcript for the following channel ${channel.name} with the id ${channel.id}.`
+                                                                        }
+                                                                ).then((value) => {
+                                                                        channel.send(`You can find the transcript here:\n${value.url}`)
+                                                                })
+                                                        };
+                                                })
                                                 break;
                                 }
                         });
