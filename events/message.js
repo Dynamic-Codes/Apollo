@@ -20,12 +20,12 @@ module.exports = {
         const Transcript = require('../models/transcriptSchema')
 
         let TranscriptProfile = await Transcript.findOne({
-            guildID: message.guild.id
+            Channel: message.channel.id
         });
 
         if (!TranscriptProfile) {
             TranscriptProfile = await new Transcript({
-                guildID: message.guild.id,
+                _id: mongoose.Types.ObjectId(),
                 Channel: message.channel.id,
             });
             await TranscriptProfile.save().catch(err => console.log(err));

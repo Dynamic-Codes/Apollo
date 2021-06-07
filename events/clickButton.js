@@ -112,8 +112,10 @@ module.exports = {
                                                 .setDescription('⛔ | This ticket will be closed and deleted!')
                                                 .setColor('RED')
                                                 channel.send(embed)
-                                                Transcript.findOneAndDelete({ Channel : channel.id })
+                                                delScript = String(channel.id)
                                                 setTimeout(() => channel.delete(), 5000);
+                                                console.log(delScript)
+                                                Transcript.findOneAndDelete({ Channel: delScript })
                                                 break;
                                         case "📝":
                                                 Transcript.findOne({ Channel : channel.id }, async(err, data) => {
@@ -136,9 +138,11 @@ module.exports = {
                                                                         description: `This is the transcript for the channel ${channel.name} with the ID ${channel.id}`,
                                                                 });
 
+
                                                                 msgTrans.edit(`${url}`)
                                                         };
                                                 })
+                                                
                                                 break;
                                 }
                         });

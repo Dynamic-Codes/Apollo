@@ -1,6 +1,8 @@
 module.exports = {
 	name: 'messageUpdate',
 	async execute(oldMessage, newMessage, client) {
+
+        if (oldMessage.author.bot) return
         const Guild = require('../models/guildSchema')
         let guildProfile = await Guild.findOne({
             guildID: oldMessage.guild.id

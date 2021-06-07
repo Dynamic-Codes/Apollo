@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
 const TranscriptSchema = new mongoose.Schema({
-    guildID: { type: String },
-    Channel: { type: String, required: false },
+    _id: mongoose.Schema.Types.ObjectId,
+    Channel: String,
     Content: { type: Array, required: false },
 })
 
