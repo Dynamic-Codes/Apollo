@@ -12,6 +12,10 @@ module.exports = {
             let categories = [];
 
             readdirSync("./commands/").forEach((dir) => {
+                if (message.author.id !== '614829609665560687') {
+                    if (dir === '🚀 Dev Portal') return;
+                    if (dir === '🧪Testing') return;
+                }
                 const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
                 file.endsWith(".js")
                 );

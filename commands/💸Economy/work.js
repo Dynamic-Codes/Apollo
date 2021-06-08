@@ -131,7 +131,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **GSport Gamer** and earnt ${GCoins}\`3000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-002') {
@@ -141,7 +141,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Galactic Miner** and earnt ${GCoins}\`5000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-003') {
@@ -151,7 +151,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Delivery service guy** and earnt ${GCoins}\`7000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-004') {
@@ -161,7 +161,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **YouTube Animator** and earnt ${GCoins}\`9000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-005') {
@@ -171,7 +171,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Galactic Patrol Officer** and earnt ${GCoins}\`12,000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-006') {
@@ -181,7 +181,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Ship Designer** and earnt ${GCoins}\`15,000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-007') {
@@ -191,7 +191,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Apollo Developer** and earnt ${GCoins}\`20,000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-008') {
@@ -201,7 +201,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Space Commander** and earnt ${GCoins}\`25,000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
 
         if (balanceProfile.job === 'wk-009') {
@@ -211,9 +211,19 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setDescription(`You worked as a **Terraform Scientist** and earnt ${GCoins}\`30,000\`!`)
                 .setColor('BLUE')
-            return message.channel.send(embed)
+            message.channel.send(embed)
         }
-        
+
+        //Apollo Premium
+        const Premium = require('../../models/premiumSchema');
+        let premiumProfile = await Premium.findOne({ userID: message.author.id});
+        if(premiumProfile) {
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + 3500, lastEdited: Date.now() });
+            const prebed = new Discord.MessageEmbed()
+            .setDescription(`🌟 Apollo Premium Bonus: ${GCoins}\`3,500\`!`)
+
+            return message.reply(prebed)
+        }
 
     }
 };
