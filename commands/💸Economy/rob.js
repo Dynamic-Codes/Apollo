@@ -7,7 +7,6 @@ module.exports = {
         cooldown: 120,
         aliases: ['steal'],
         async execute(message, args, client) {
-                message.delete()
                 const Balance = require('../../models/balanceSchema');
                 const Eco = require('../../models/ecoSchema');
                 const mongoose = require('mongoose');
@@ -18,6 +17,10 @@ module.exports = {
                 const GCoins = '<:GalacticCurrency:840312897187217468>'
 
                 //Code here
+
+                if (robDude.id === message.author.id) {
+                        message.author.reply('Why in the universe are you robbing yourself?')
+                }
 
                 let EcoProfile = await Eco.findOne({
                         guildID: message.guild.id
