@@ -19,7 +19,7 @@ module.exports = {
                 //Code here
 
                 if (robDude.id === message.author.id) {
-                        message.author.reply('Why in the universe are you robbing yourself?')
+                        message.reply('Why in the universe are you robbing yourself?')
                 }
 
                 let EcoProfile = await Eco.findOne({
