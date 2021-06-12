@@ -8,8 +8,8 @@ module.exports = {
         aliases: ['steal'],
         async execute(message, args, client) {
                 message.delete()
-                const balanceSchema = require('../../models/balanceSchema');
-                const ecoSchema = require('../../models/ecoSchema');
+                const Balance = require('../../models/balanceSchema');
+                const Eco = require('../../models/ecoSchema');
                 const mongoose = require('mongoose');
                 const Discord = require('discord.js');
                 const ms = require("ms");

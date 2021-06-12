@@ -14,7 +14,7 @@ module.exports = {
 
                 message.delete()
 
-                if (!message.author.permissions.has("MANAGE_GUILD")) {
+                if (!message.member.permissions.has("MANAGE_GUILD")) {
                     const PermErrorEmbed = new Discord.MessageEmbed()
                         .setTitle('Missing Permission!')
                         .setDescription('Seems like you don\'t have the correct permission to use this command! Yikes..')
