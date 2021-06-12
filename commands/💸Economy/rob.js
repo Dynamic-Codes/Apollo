@@ -20,7 +20,7 @@ module.exports = {
 
                 //Code here
 
-                EcoProfile = await Eco.findOne({
+                let EcoProfile = await Eco.findOne({
                         guildID: message.guild.id
                 });
 
@@ -40,7 +40,7 @@ module.exports = {
                         return message.channel.send(embed)
                 }
 
-                balanceProfile = await Balance.findOne({
+                let balanceProfile = await Balance.findOne({
                         userID: robDude.id
                 });
 
