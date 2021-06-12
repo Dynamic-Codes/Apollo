@@ -12,6 +12,7 @@ const balanceSchema = new mongoose.Schema({
     workStreak: { type: Number, default: 0},
     workCool: {type: Number, default: 0},
     pfpDescrip: {type: String, default: 'User has not set there description.\nUse \`a!pf descrip <description>\` to set.'},
+    StealCools: {type: Number, default: 0},
 })
 
 module.exports = mongoose.model("Balance", balanceSchema, 'balances')

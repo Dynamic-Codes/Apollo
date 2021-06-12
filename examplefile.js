@@ -7,7 +7,13 @@ module.exports = {
         ownerOnly: true,
         cooldown: 5,
         aliases: ['ex', 'eg'],
-        execute(message, args, client) {
+        async execute(message, args, client) {
+                message.delete()
+                const Schema = require('../../models/Schema');
+                const mongoose = require('mongoose');
+                const Discord = require('discord.js');
+                const ms = require("ms");
+
                 //Code here
         }
 };

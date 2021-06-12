@@ -8,7 +8,6 @@ module.exports = {
         const mongoose = require('mongoose');
         const Discord = require('discord.js');
         const ms = require("ms");
-
         const GCoins = '<:GalacticCurrency:840312897187217468>'
 
         let balanceProfile = await Balance.findOne({ userID: message.author.id});
@@ -45,6 +44,17 @@ module.exports = {
                 .setColor('PURPLE')
 
             message.channel.send(embed)
+        }
+
+        //Apollo Premium
+        const Premium = require('../../models/premiumSchema');
+        let premiumProfile = await Premium.findOne({ userID: message.author.id});
+        if(premiumProfile) {
+            await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + 3500, lastEdited: Date.now() });
+            const prebed = new Discord.MessageEmbed()
+            .setDescription(`🌟 Apollo Premium Bonus: ${GCoins}\`3,500\`!`)
+
+            return message.reply(prebed)
         }
 
     },
