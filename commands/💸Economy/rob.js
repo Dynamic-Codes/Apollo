@@ -98,7 +98,7 @@ module.exports = {
 
                 } else {
                         await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - 350, lastEdited: Date.now() });
-                        await Balance.findOneAndUpdate({ userID: robDude.id}, { balance: balanceProfile.balance + 350, lastEdited: Date.now() });
+                        await Balance.findOneAndUpdate({ userID: robDude.id}, { balance: balanceProfile.balance + 350, StealCools: timeout , lastEdited: Date.now() });
 
                         const array = [
                                 'Now that was not what I was expecting to get.. You gave',
