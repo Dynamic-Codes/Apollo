@@ -15,7 +15,6 @@ module.exports = {
                 const ms = require("ms");
                 let timeout =  120000;
                 let robDude = message.mentions.users.first() || agrs[0]
-                let daily = balanceProfile.StealCools
                 const GCoins = '<:GalacticCurrency:840312897187217468>'
 
                 //Code here
@@ -43,6 +42,8 @@ module.exports = {
                 let balanceProfile = await Balance.findOne({
                         userID: robDude.id
                 });
+
+                let daily = balanceProfile.StealCools
 
                 if ((Date.now()) < daily) {
                     let TimeRemainRAW = ( daily - Date.now() )
