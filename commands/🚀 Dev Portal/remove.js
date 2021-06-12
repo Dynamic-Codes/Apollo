@@ -31,7 +31,7 @@ module.exports = {
 
         if (balanceProfile.balance < addAmount) return message.reply('They don\'t even have that much!')
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance - addAmount, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: mentionMember.id }, { balance: balanceProfile.balance - addAmount, lastEdited: Date.now() });
 
         const BotEmbed = new Discord.MessageEmbed()
             .setDescription(`${LoadMoji} removing amount...`)

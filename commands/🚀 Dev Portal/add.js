@@ -27,7 +27,7 @@ module.exports = {
             await balanceProfile.save().catch(err => console.log(err));
         }
 
-        await Balance.findOneAndUpdate({ userID: message.author.id}, { balance: balanceProfile.balance + addAmount, lastEdited: Date.now() });
+        await Balance.findOneAndUpdate({ userID: mentionMember.id }, { balance: balanceProfile.balance + addAmount, lastEdited: Date.now() });
 
         const BotEmbed = new Discord.MessageEmbed()
             .setDescription(`${LoadMoji} adding amount...`)
