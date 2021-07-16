@@ -181,7 +181,7 @@ mongoose.connect(mongodb_srv, {
     useUnifiedTopology: true,
     useFindAndModify: false
 }).then(()=>{
-    console.log('MongoDB Native Driver Status: CONNECTED!')
+    console.log('MongoDB Native Driver Status: CONNECTED!') 
 }).catch((err)=>{
     console.log(err)
 })
@@ -206,6 +206,37 @@ client.on('message', async message => {
             if (afkProfile) message.channel.send(`꒰${member.user.tag}꒱ ꒦ Is currently AFK for reason: ${afkProfile.reason} ꒷`)
         })
     }
+})
+
+client.on('message', async message => {
+    if (message.author.bot) return;
+
+    const Count = require('./models/countSchema');
+    const args = message.content.trim().split(/ +/);
+    let nn1 = parseInt(args[0])
+
+    let countProfile = await Count.findOne({ guildID: message.guild.id});
+    if (!countProfile) return;
+    if (message.channel.id !== countProfile.channelID) return;
+    if (isNaN(args[0])) return message.delete();
+    if (message.author.id === countProfile.LastAuth) return message.delete();
+    let nn = (countProfile.CountNum + 1)
+    console.log(nn)
+    if (nn1 !== nn) return message.delete();
+
+    if(args[0] == nn1){
+        //
+        const webhooks = await message.channel.fetchWebhooks();
+        const webhook = webhooks.first();
+        message.delete()
+        await Count.findOneAndUpdate({ guildID: message.guild.id}, { LastAuth: message.author.id, CountNum: countProfile.CountNum + 1 })
+        await webhook.send(nn, {
+            username: message.author.username,
+            avatarURL: message.author.avatarURL(),
+        });
+
+    }
+
 })
 
 const activities_list = [

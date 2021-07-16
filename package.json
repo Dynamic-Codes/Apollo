@@ -31,6 +31,7 @@
     "randomatic": "^3.1.1",
     "sequelize": "^6.6.2",
     "sourcebin-lite": "^0.0.4",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "ytdl-core": "^4.8.3"
   }
 }
