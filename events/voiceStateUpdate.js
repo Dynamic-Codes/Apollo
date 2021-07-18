@@ -56,6 +56,28 @@ module.exports = {
                 CONNECT: true
             });
 
+            const channelNoMic = await oldState.guild.channels.create(`${user.username} - No Mic`, {
+                type: "text"
+            });
+            channelNoMic.setParent(boosterProfile.ParentSection);
+            channelNoMic.updateOverwrite(oldState.guild.roles.everyone, {
+                VIEW_CHANNEL: true,
+                SEND_MESSAGES: false,
+                READ_MESSAGE_HISTORY: false,
+                ATTACH_FILES: true,
+                EMBED_LINKS: true,
+                ADD_REACTIONS: true,
+            });
+            channelNoMic.updateOverwrite(user.id, {
+                MANAGE_CHANNELS: true,
+                VIEW_CHANNEL: true,
+                SEND_MESSAGES: true,
+                READ_MESSAGE_HISTORY: true,
+                ATTACH_FILES: true,
+                EMBED_LINKS: true,
+                ADD_REACTIONS: true,
+            });
+
             member.voice.setChannel(channel)
         };
 
