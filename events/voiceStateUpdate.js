@@ -76,6 +76,7 @@ module.exports = {
                 ATTACH_FILES: true,
                 EMBED_LINKS: true,
                 ADD_REACTIONS: true,
+                MANAGE_PERMISSION: true,
             });
 
             member.voice.setChannel(channel)
