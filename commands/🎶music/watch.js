@@ -5,7 +5,6 @@ module.exports = {
         cooldown: 30,
         async execute(message, args, client) {
                 message.delete()
-                const Schema = require('../../models/Schema');
                 const mongoose = require('mongoose');
                 const Discord = require('discord.js');
                 const ms = require("ms");
