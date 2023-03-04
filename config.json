@@ -1,6 +1,6 @@
 {
-    "token": "ODMzMzUzNjI0NzYyNTgxMDIz.YHxHCw.1inUgFf-APfmffIWQhOHGgMf2AQ",
-    "owner": "614829609665560687",
+    "token": "bot-token-here",
+    "owner": "owner-id-here",
     "prefix": "a!",
-    "mongodb_srv": "mongodb+srv://3tconnect:3tpass1619@apollobot.4ytev.mongodb.net/ApolloDB?retryWrites=true&w=majority"
+    "mongodb_srv": "mongodb+srv://ConnectionStringHere"
 }
